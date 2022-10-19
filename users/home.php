@@ -32,13 +32,14 @@ $user_id = $_SESSION['user_id'];
     if(mysqli_num_rows($run_comments) > 0){
         foreach($run_comments as $row){
             ?>
-
-                <p><?php echo $row ['username']?></p>
+            
+                <a href="profile.php?user_id=<?php echo $row ['username']?>"><?php echo $row ['username'] ?> </a>
                 <img src="<?php echo "uploads/" . $row ['image']?>" alt="user image" height="100px" width="100px">
                 <p>
                     <?php $d = strtotime($row['date_time_created']);
                     echo date("M-d-Y h:i:sa", $d);?>
                 </p>
+                <p><?php echo $row['comment'] ?> </p>
                 <a href="edit-comment.php?user_id=<?php echo $row ['user_id']?>">Edit</a>
                 <a href="delete-comment.php?user_id=<?php echo $row ['user_id']?>">Delete</a>
             <?php

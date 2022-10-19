@@ -18,6 +18,7 @@ $user_id = $_SESSION['user_id'];
     <title>Document</title>
 </head>
 <body>
+    <a href="logout.php">Log out</a>
     <h1>Forums</h1>
 
     <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis debitis quia accusamus, earum iusto obcaecati molestiae consequuntur tempore magnam dicta!</h2>

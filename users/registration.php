@@ -11,6 +11,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/app.css">
     <title>Document</title>
 </head>
 <body>
@@ -38,6 +39,7 @@ session_start();
         <br>
         <input type="submit" name="register" value="Create Account">
     </form>
+    <script src="../src/js/app.js"></script>t
 </body>
 </html>
 

@@ -25,11 +25,19 @@ session_start();
             <div class="col-12 text-center">
                 <img src="../src/img/photos/soul_inc_2.png" alt="" style="height:150px; padding:0; margin: 0;">
             </div>
+
             <div class="col-7">
                 <form action="" method="POST" class="row container justify-content-center">
                     <div class="col-12 mb-4 text-center">
                         <label class="w-50 text-start" for="">Username</label>
                         <input type="text" name="username" class="w-50 py-xxl-2" style="outline: none;">
+
+            <div class="col-6">
+                <h1 style="color:rgba(255,255,255,0.6);">Log In</h1>
+                <form action="login.php" method="POST" class="row">
+                    <div class="col-12 mb-4">
+                        <label for="">Username</label>
+                        <input type="text" name="username" class="w-100 py-xxl-2">
                     </div>
                     <div class="col-12 mb-4 text-center">
                         <label class="w-50 text-start" for="">Password</label>

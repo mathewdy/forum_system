@@ -27,7 +27,7 @@ session_start();
             </div>
             <div class="col-6">
                 <h1 style="color:rgba(255,255,255,0.6);">Log In</h1>
-                <form action="" method="POST" class="row">
+                <form action="login.php" method="POST" class="row">
                     <div class="col-12 mb-4">
                         <label for="">Username</label>
                         <input type="text" name="username" class="w-100 py-xxl-2">

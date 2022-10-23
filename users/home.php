@@ -49,7 +49,7 @@ $user_id = $_SESSION['user_id'];
 			</ul>
 		</div>
 	</nav>
-    <main class="container" style="color:rgba(255,255,255,0.6);">
+    <main class="container mb-5" style="color:rgba(255,255,255,0.6);">
         <div class="container-fluid p-0 pt-5">
             <h1 style="color: rgba(255,255,255,0.6);">Forums</h1>        
         </div>
@@ -90,10 +90,10 @@ $user_id = $_SESSION['user_id'];
     </div>
     <form action="" method="POST" class="row">
         <div class="col-12 col-sm-12">
-            <textarea name="comment" id="" class="w-100" placeholder="Comment" cols="50"  style="outline: none; resize: none;"></textarea>
+            <textarea name="comment" id="" class="w-100 py-2 px-4" placeholder="Comment" cols="50"  style="outline: none; resize: none; border-radius: 8px;"></textarea>
         </div>
         <div class="col-12 col-sm-12">
-            <input type="submit" name="add_comment" value="Post">
+            <input type="submit" name="add_comment" class="btn btn-primary px-4" value="Post">
         </div>
     </form>
     </main>

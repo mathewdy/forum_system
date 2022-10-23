@@ -23,6 +23,7 @@ session_start();
     <input type="password" name="password">
     <br>
     <input type="submit" name="login" value="Login">
+    <a href="registration.php">Create Account</a>
     </form>
 </body>
 </html>
@@ -34,33 +35,27 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 
-$sql = "SELECT  `username`, `password` FROM `admins` WHERE username = '$username'";
-$run_sql = mysqli_query($conn,$sql);
+$sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
+    $run = mysqli_query($conn,$sql);
 
-if (mysqli_num_rows($run_sql)>0){
-    while($row=mysqli_fetch_assoc($run_sql)){
-        if($password == $row['password']){ 
-            
-            $_SESSION['admin'] = $username;
-            echo '<script>alert("correct credentials")</script>'; 
-            header("location: index.php");
-            die();
+    if(mysqli_num_rows($run) > 0){
+        foreach($run as $row){
 
-        } 
-        else{
-            echo '<script>alert("Incorrect credentials")</script>' ; 
+            if($row['user_type'] == '0'){
+                echo "<script>alert('di ka pwede bobo user ka'); </script>";
+            }else{
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $password;
+                $_SESSION['user_id'] = $row ['user_id'];
+                header("Location: index.php");
+            }
+          
         }
-
-
-
-
-
+    }else{
+        echo "User not found" . $conn->error;
+    }
 }
 
-
-}
-
-}
-
+ob_end_flush();
 
 ?>

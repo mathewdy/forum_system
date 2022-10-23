@@ -59,7 +59,7 @@ if(isset($_POST['update'])){
     $run_update = mysqli_query($conn,$sql_update);
 
     if($run_update){
-        echo "<script>window.location.href='view-post.php?topic_id=$topic_id' </script>";
+        echo "<script>window.location.href='view-post.php?topic_id=$topic_id'; </script>";
     }else{
         echo "error" . $conn->error;
     }

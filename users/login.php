@@ -63,11 +63,16 @@ if(isset($_POST['login'])){
 
     if(mysqli_num_rows($run) > 0){
         foreach($run as $row){
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-            $_SESSION['user_id'] = $row ['user_id'];
 
-            header("Location: home.php");
+            if($row['user_type'] == '1'){
+                echo "<script>alert('di ka pwede bobo admin ka'); </script>";
+            }else{
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $password;
+                $_SESSION['user_id'] = $row ['user_id'];
+                header("Location: home.php");
+            }
+          
         }
     }else{
         echo "User not found" . $conn->error;

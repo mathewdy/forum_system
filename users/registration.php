@@ -39,7 +39,7 @@ session_start();
         <br>
         <input type="submit" name="register" value="Create Account">
     </form>
-    <script src="../src/js/app.js"></script>t
+    <script src="../src/js/app.js"></script>
 </body>
 </html>
 

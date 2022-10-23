@@ -54,48 +54,71 @@ $user_id = $_SESSION['user_id'];
             <h1 style="color: rgba(255,255,255,0.6);">Forums</h1>        
         </div>
 
-    <h2 style="color: rgba(255,255,255,0.6);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis debitis quia accusamus, earum iusto obcaecati molestiae consequuntur tempore magnam dicta!</h2>
+        <!----create post--->
+    <h2 style="color: rgba(255,255,255,0.6);">
+        <form action="add-post.php" method="POST">
+            <label for="">Craete Post</label>
+            <input type="text" name="topic">
+            <input type="submit" name="add_post">
+        </form>
+    </h2>
     <div class="row pt-4">
     <?php
 
-    $view_comments = "SELECT users.user_id, users.first_name, users.last_name, users.image , threads.comment, threads.date_time_created, users.username
-    FROM users 
-    LEFT JOIN threads ON users.user_id = threads.user_id";
-    $run_comments = mysqli_query($conn,$view_comments);
+    //view post muna bago mag comment
+    $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
+    users.user_id , users.username , users.image , users.date_time_created
+    FROM posts
+    LEFT JOIN users 
+    ON posts.user_id = users.user_id";
+    $run_post = mysqli_query($conn,$view_post);
 
-    if(mysqli_num_rows($run_comments) > 0){
-        foreach($run_comments as $row){
+    if(mysqli_num_rows($run_post) > 0){
+        foreach($run_post as $row){
             ?>
-            <div class="col-12 col-xxl-12 row my-2">
-                <div class="col-12 d-flex flex-row align-items-center">
-                    <img src="<?php echo "uploads/" . $row ['image']?>" alt="user image" style="height:37px; width: 37px; border-radius: 50%; padding: 0; margin: 0;">
-                    <a class="px-2" style="font-size: 16px;" href="profile.php?user_id=<?php echo $row ['user_id']?>"><?php echo $row ['username'] ?> </a>
-                    <?php $d = strtotime($row['date_time_created']); ?>
-                    <span class="text-muted"><?= date("F d, Y h:i a", $d);?></span>
-                </div>
-                <div class="col-12 py-4 px-5">
-                    <p><?php echo $row['comment'] ?> </p>
-                </div>
-                <div class="col-12 d-flex flex-row px-5">
-                    <a style="padding:0 8px 0 0;" href="edit-comment.php?user_id=<?php echo $row ['user_id']?>">Edit</a>
-                    <a href="delete-comment.php?user_id=<?php echo $row ['user_id']?>">Delete</a>
-                </div>
-            </div>
-            <hr class="featurette-divider" style="background: rgba(255,255,255,0.3);">
+                <h1><?php echo $row ['topic']?></h1>
+                <img src="<?php echo "uploads/" . $row['image'] ?>" alt="Image of User" width="100px" height="100px">
+
+                
+                <a href="view-post.php?topic_id=<?php echo $row ['topic_id']?>">View Thread</a>
+
+                <!--hindi pa tapos yung edit--->
+               
+                <?php 
+                if($row['user_id'] == $_SESSION['user_id'])
+                {
+                    echo "<a href='edit-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]'>Edit</a>";
+                }else{
+                    echo "";
+                } 
+                ?>
+
+                <!-----hindi pa din tapos yung delete--->
+
+
+                <?php 
+                if($row['user_id'] == $_SESSION['user_id'])
+                {
+                    echo "<a href='delete-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]'>Delete</a>";
+                }else{
+                    echo "";
+                } 
+                ?>
+
+
+               
             <?php
+            
         }
+    }else{
+        echo "No posts yet" . $conn->error;
     }
 
     ?>
     </div>
-    <form action="" method="POST" class="row">
-        <div class="col-12 col-sm-12">
-            <textarea name="comment" id="" class="w-100 py-2 px-4" placeholder="Comment" cols="50"  style="outline: none; resize: none; border-radius: 8px;"></textarea>
-        </div>
-        <div class="col-12 col-sm-12">
-            <input type="submit" name="add_comment" class="btn btn-primary px-4" value="Post">
-        </div>
-    </form>
+
+    
+   
     </main>
     <script src="../src/js/app.js"></script>
 </body>
@@ -103,21 +126,7 @@ $user_id = $_SESSION['user_id'];
 
 <?php
 
-if(isset($_POST['add_comment'])){
-    date_default_timezone_set("Asia/Manila");
-    $time= date("h:i:s", time());
-    $date = date('y-m-d');
-    $comment = $_POST['comment'];
 
-    $sql = "INSERT INTO threads (user_id,comment,date_time_created,date_time_updated) VALUES ('$user_id' , '$comment', '$date $time' , '$date $time')";
-    $run = mysqli_query($conn,$sql);
-
-    if($run){
-        echo "<script>window.location.href='home.php' </script>";
-    }else{
-        echo "error" . $conn->error;
-    }
-}
 
 ob_end_flush();
 

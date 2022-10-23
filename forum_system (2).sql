@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2022 at 05:37 PM
+-- Generation Time: Oct 23, 2022 at 04:27 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -37,12 +37,37 @@ CREATE TABLE `admins` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `topic_id` int(50) NOT NULL,
+  `topic` varchar(250) NOT NULL,
+  `date_time_created` datetime NOT NULL,
+  `date_time_updated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `topic`, `date_time_created`, `date_time_updated`) VALUES
+(13, 20227339, 20229725, 'smaple post 1', '2022-10-23 10:05:46', '2022-10-23 10:05:46'),
+(14, 20224952, 202210657, 'post ko to 2 ', '2022-10-23 10:23:40', '2022-10-23 10:23:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `threads`
 --
 
 CREATE TABLE `threads` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `topic_id` int(50) NOT NULL,
+  `comment_id` int(50) NOT NULL,
   `comment` varchar(255) NOT NULL,
   `date_time_created` datetime NOT NULL,
   `date_time_updated` datetime NOT NULL
@@ -52,8 +77,12 @@ CREATE TABLE `threads` (
 -- Dumping data for table `threads`
 --
 
-INSERT INTO `threads` (`id`, `user_id`, `comment`, `date_time_created`, `date_time_updated`) VALUES
-(2, 202210542, 'sample comment', '2022-10-17 11:20:33', '2022-10-17 11:20:33');
+INSERT INTO `threads` (`id`, `user_id`, `topic_id`, `comment_id`, `comment`, `date_time_created`, `date_time_updated`) VALUES
+(25, 20227339, 20229725, 20238416, 'updated comment ko to', '2022-10-23 10:05:55', '2022-10-23 10:05:55'),
+(26, 20224952, 20229725, 202362646, 'mathew123 comment', '2022-10-23 10:06:50', '2022-10-23 10:06:50'),
+(27, 20227339, 20229725, 202345865, 'updated comment ulit ', '2022-10-23 10:12:26', '2022-10-23 10:12:26'),
+(28, 20224952, 202210657, 202312207, 'hahaha gago  123', '2022-10-23 10:23:45', '2022-10-23 10:23:45'),
+(29, 20227339, 202210657, 202316839, 'ttteee', '2022-10-23 10:24:10', '2022-10-23 10:24:10');
 
 -- --------------------------------------------------------
 
@@ -78,7 +107,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `first_name`, `last_name`, `image`, `username`, `password`, `date_time_created`, `date_time_updated`) VALUES
-(1, 202210542, 'mathew', 'dalisay', '311465771_5797704176935977_8090302817302234511_n.jpg', 'mathew123', '123', '2022-10-17 11:03:22', '2022-10-17 11:03:22');
+(3, 20224952, 'mathew', 'dalisay', 'dfd.jpg', 'mathew123', '123', '2022-10-23 10:02:35', '2022-10-23 10:02:35'),
+(4, 20227339, 'dorothy', 'jean', 'old ervin.jpg', 'melendez', '123', '2022-10-23 10:05:04', '2022-10-23 10:05:04');
 
 --
 -- Indexes for dumped tables
@@ -89,6 +119,13 @@ INSERT INTO `users` (`id`, `user_id`, `first_name`, `last_name`, `image`, `usern
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `threads`
@@ -115,20 +152,32 @@ ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `threads`

@@ -44,10 +44,8 @@ if (mysqli_num_rows($run_sql)>0){
             $_SESSION['admin'] = $username;
             echo '<script>alert("correct credentials")</script>'; 
             header("location: index.php");
-
             die();
 
-            
         } 
         else{
             echo '<script>alert("Incorrect credentials")</script>' ; 

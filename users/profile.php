@@ -6,7 +6,7 @@ if(empty($_SESSION['user_id'])){
     echo "<script>window.location.href='login.php' </script>";
 }
 
-
+$user_id = $_SESSION['user_id'];
 
 if(isset($_GET['user_id'])){
 
@@ -75,7 +75,7 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
         <div class="row pt-5">
         <?php
 
-        $view_profile = "SELECT `first_name`, `last_name`, `image` FROM `users` WHERE user_id = '$user_id'";
+        $view_profile = "SELECT `first_name`, `last_name`, `image`, `user_id` FROM `users` WHERE user_id = '$user_id'";
         $run_profile = mysqli_query($conn,$view_profile);
 
         if(mysqli_num_rows($run_profile) > 0){
@@ -87,6 +87,8 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
                 <div class="col-7">
                     <h1 style="color: rgba(255,255,255,0.6);"><?php echo ucfirst($row['first_name'])." ". ucfirst($row['last_name']); ?> </h1>
                 </div>        
+
+                <a href="edit-profile.php?user_id=<?php echo $row ['user_id']?>">Edit</a>
                 <?php
             }
         }

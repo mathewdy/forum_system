@@ -17,7 +17,7 @@ if(isset($_POST['add_post'])){
     $run_sql = mysqli_query($conn,$sql);
 
     if($run_sql) {
-        echo "added post";
+        echo "<script>window.location.href='home.php' </script>";
     }else{
         echo "error" . $conn->error;
     }

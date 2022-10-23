@@ -38,10 +38,17 @@ $user_id = $_SESSION['user_id'];
         if(mysqli_num_rows($run) > 0){
             foreach($run as $row ) {
                 ?>
-                    <form action=""></form>
+                    <form action="" method="POST">
                     <p><?php echo $row ['username']?></p>
                     <img src="<?php echo "uploads/" . $row['image'] ?>" alt="Image of User" width="100px" height="100px">
-                    <p><?php echo $row ['topic']?></p>                    
+                    <input type="text" name="topic" value="<?php echo $row['topic']?>">
+                    <br>
+                    <input type="hidden" name="user_id" value="<?php echo $row ['user_id']?>">
+                    <input type="hidden" name="topic_id" value="<?php echo $row ['topic_id']?>">
+
+                    <input type="submit" name="update" value="Update">
+
+                    </form>                
                 <?php
             }
         }
@@ -54,6 +61,28 @@ $user_id = $_SESSION['user_id'];
 </html>
 
 <?php
+
+if(isset($_POST['update'])){
+
+    date_default_timezone_set("Asia/Manila");
+    $time= date("h:i:s", time());
+    $date = date('y-m-d');
+
+    $user_id = $_POST['user_id'];
+    $topic_id = $_POST['topic_id'];
+    $topic = $_POST['topic'];
+
+
+    $sql_update = "UPDATE posts SET topic = '$topic', date_time_updated= '$date $time' WHERE user_id = '$user_id' AND topic_id = '$topic_id'";
+    $run_update = mysqli_query($conn,$sql_update);
+
+    if($run_update){
+        echo "<script>window.location.href='home.php' </script>";
+    }else{
+        echo "error" . $conn->error;
+    }
+
+}
 
 ob_end_flush();
 

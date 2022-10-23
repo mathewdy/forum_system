@@ -19,11 +19,13 @@ $_SESSION['user_id'];
     <a href="home.php">Back</a>
     <?php
 
-        
-
         if(isset($_GET['topic_id'])){
             $topic_id = $_GET['topic_id'];
-            $sql_topic = "SELECT * FROM posts WHERE topic_id = '$topic_id'";
+            $sql_topic = "SELECT posts.topic_id,posts.topic, users.user_id , 
+            users.username , users.image, users.date_time_created
+            FROM posts 
+            LEFT JOIN users 
+            ON posts.user_id = users.user_id WHERE topic_id = '$topic_id'";
             $run_topic = mysqli_query($conn,$sql_topic);
 
             if(mysqli_num_rows($run_topic) > 0){
@@ -31,6 +33,8 @@ $_SESSION['user_id'];
                     ?>
 
                         <h1><?php echo $row_topic ['topic']?></h1>
+                        <p><?php echo $row_topic ['username']?> </p>
+                        <img src="<?php echo "uploads/" . $row_topic ['image'] ?>" alt="image user" width="100px" height="100px">
                         <form action="" method="POST">
                             <input type="text" name="comment">
                             <input type="hidden" name="topic_id_insert" value="<?php echo $row_topic ['topic_id']?>">
@@ -46,27 +50,37 @@ $_SESSION['user_id'];
         if(isset($_GET['topic_id'])){
             $topic_id_1 = $_GET['topic_id'];
 
-            $sql_threads = "SELECT * FROM threads WHERE topic_id = '$topic_id_1'";
+            $sql_threads = "SELECT threads.topic_id,threads.comment_id,threads.comment,threads.date_time_created ,users.image, users.username,users.date_time_created, users.user_id
+            FROM threads
+            LEFT JOIN users 
+            ON threads.user_id = users.user_id 
+            WHERE threads.topic_id = '$topic_id_1'";
             $run_threads = mysqli_query($conn,$sql_threads);
 
             if(mysqli_num_rows($run_threads) > 0){
                 foreach($run_threads as $row_threads){
                     ?>
 
+                        <!-----username nya FOR THE NAME---->
+                        <p><?php echo $row_threads ['username']?></p>
+                        <!---forda image ni user--->
+                        <img src="<?php echo "uploads/" . $row_threads['image'] ?>" alt="image user" width="100px" height="100px">
                         <p><?php echo $row_threads ['comment']?></p>
 
                         <!--edit comment -->
                         
                         <?php if($row_threads['user_id'] == $_SESSION['user_id'])
                         {
-                            echo "<a href='edit-comment.php?comment_id=$row_threads[comment_id]'>Edit </a>";
+                            echo "<a href='edit-comment.php?comment_id=$row_threads[comment_id]'>Edit</a>";
                         }else{
                             echo "";
                         } ?>
 
+                        <!----delete--->
+
                         <?php if($row_threads['user_id'] == $_SESSION['user_id'])
                         {
-                            echo "<a href='delete-comment.php?comment_id=$row_threads[comment_id]'>Delete </a>";
+                            echo "<a href='delete-comment.php?comment_id=$row_threads[comment_id]'>Delete</a>";
                         }else{
                             echo "";
                         } ?>

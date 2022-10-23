@@ -55,70 +55,80 @@ $user_id = $_SESSION['user_id'];
         </div>
 
         <!----create post--->
-    <h2 style="color: rgba(255,255,255,0.6);">
-        <form action="add-post.php" method="POST">
-            <label for="">Craete Post</label>
-            <input type="text" name="topic">
-            <input type="submit" name="add_post">
-        </form>
-    </h2>
-    <div class="row pt-4">
-    <?php
+        <h2 style="color: rgba(255,255,255,0.6);">
+            <form action="add-post.php" method="POST">
+                <label for="">Create Post</label>
+                <input type="text" name="topic">
+                <input type="submit" name="add_post">
+            </form>
+        </h2>
+        <div class="row pt-4">
+        <?php
 
-    //view post muna bago mag comment
-    $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
-    users.user_id , users.username , users.image , users.date_time_created
-    FROM posts
-    LEFT JOIN users 
-    ON posts.user_id = users.user_id";
-    $run_post = mysqli_query($conn,$view_post);
+        //view post muna bago mag comment
+        $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
+        users.user_id , users.username , users.image , users.date_time_created
+        FROM posts
+        LEFT JOIN users 
+        ON posts.user_id = users.user_id";
+        $run_post = mysqli_query($conn,$view_post);
 
-    if(mysqli_num_rows($run_post) > 0){
-        foreach($run_post as $row){
-            ?>
-                <h1><?php echo $row ['topic']?></h1>
-                <img src="<?php echo "uploads/" . $row['image'] ?>" alt="Image of User" width="100px" height="100px">
+        if(mysqli_num_rows($run_post) > 0){
+            foreach($run_post as $row){
+                ?>
+                    <div class="card bg-dark p-4" style="border:none; border-left: 3px solid #990000;">
+                        <span class="d-flex">
+                            <img src="<?php echo "uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
+                            <span class="px-3">
+                                <p class="p-0 m-0"><?= $row['username']?></p>
+                                <a href="view-post.php?topic_id=<?php echo $row ['topic_id']?>" style="font-size: 1.4em; color: rgba(255,255,255,0.6);"><?php echo $row ['topic']?></a>
+                            </span>
+                        
+                      
+
+                        <!--hindi pa tapos yung edit--->
+                            <span class="ms-auto">
+                                <span>
+                                    <?php $d = strtotime($row['date_time_created']); ?>
+                                    <span class="text-muted"><?= date("F d, Y | h:i a", $d);?></span>
+                                </span>
+                                <span class=" d-flex flex-row align-items-end justify-content-end">
+                                    <?php 
+                                    if($row['user_id'] == $_SESSION['user_id'])
+                                    {
+                                        echo "<a href='edit-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]' style='color: rgba(255,255,255,0.6);'>Edit</a>";
+                                        // echo "<span class='vr mx-2' style='border:1px solid rgba(255,255,255,0.6);'></span>";
+
+                                    }else{
+                                        echo "";
+                                    } 
+                                    ?>
+
+                                    <!-----hindi pa din tapos yung delete--->
+
+                                    <?php 
+                                    if($row['user_id'] == $_SESSION['user_id'])
+                                    {
+                                        echo "<a href='delete-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]' style='color: rgba(255,255,255,0.6); padding: 0 0 0 5px;'>Delete</a>";
+                                    }else{
+                                        echo "";
+                                    } 
+                                    ?>
+                                </span>
+                            </span>
+                        </span>
+                    </div>
 
                 
-                <a href="view-post.php?topic_id=<?php echo $row ['topic_id']?>">View Thread</a>
-
-                <!--hindi pa tapos yung edit--->
-               
-                <?php 
-                if($row['user_id'] == $_SESSION['user_id'])
-                {
-                    echo "<a href='edit-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]'>Edit</a>";
-                }else{
-                    echo "";
-                } 
-                ?>
-
-                <!-----hindi pa din tapos yung delete--->
-
-
-                <?php 
-                if($row['user_id'] == $_SESSION['user_id'])
-                {
-                    echo "<a href='delete-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]'>Delete</a>";
-                }else{
-                    echo "";
-                } 
-                ?>
-
-
-               
-            <?php
-            
+                <?php
+                
+            }
+        }else{
+            echo "No posts available." . $conn->error;
         }
-    }else{
-        echo "No posts yet" . $conn->error;
-    }
 
-    ?>
-    </div>
-
-    
-   
+        ?>
+        </div>   
     </main>
     <script src="../src/js/app.js"></script>
 </body>

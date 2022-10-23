@@ -11,12 +11,45 @@ $_SESSION['user_id'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/app.css">
     <title>Document</title>
 </head>
-<body>
-    
+<body style="background: rgba(0, 0, 0, 0.9);">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="navbar-collapse collapse">
+            <a href="home.php" class="navbar-brand p-0 px-lg-4 px-sm-0">
+                <img src="../src/img/photos/soul_inc.png" alt="" height="50">
+            </a>
+            <ul class="navbar-nav navbar-align px-lg-4 px-sm-0">
+                <li class="nav-item">
+                    <a href="home.php" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="home.php" class="nav-link">Forum</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings align-middle"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </a>
 
-    <a href="home.php">Back</a>
+                    <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings align-middle me-2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+                        <a class="dropdown-item text-light" href="profile.php?user_id=<?= $user_id; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-light" href="logout.php">Log out</a>
+                    </div>
+                </li>
+			</ul>
+		</div>
+	</nav>
+    <main class="container mb-5" style="color:rgba(255,255,255,0.6);">
+        <div class="container-fluid p-0 pt-5 pb-4">
+            <!-- <a href="home.php" style="text-decoration:none; color: rgba(255,255,255,0.6);">< Go Back</a> -->
+            <h4 style="color: rgba(255,255,255,0.6);">Discussion</h4>        
+        </div>
+    
     <?php
 
         if(isset($_GET['topic_id'])){
@@ -31,16 +64,24 @@ $_SESSION['user_id'];
             if(mysqli_num_rows($run_topic) > 0){
                 foreach($run_topic as $row_topic){
                     ?>
-
-                        <h1><?php echo $row_topic ['topic']?></h1>
-                        <p><?php echo $row_topic ['username']?> </p>
-                        <img src="<?php echo "uploads/" . $row_topic ['image'] ?>" alt="image user" width="100px" height="100px">
-                        <form action="" method="POST">
-                            <input type="text" name="comment">
-                            <input type="hidden" name="topic_id_insert" value="<?php echo $row_topic ['topic_id']?>">
-                            <input type="submit" name="add_comment" value="Add Comment">
+                    <div class="container mb-5">
+                        <div class="card bg-dark px-5 py-4">
+                            <span class="d-flex flex-row align-items-center">
+                                <img src="<?php echo "uploads/" . $row_topic ['image'] ?>" alt="image user" style="height:50px; width: 50px; border-radius: 20%; padding: 0; margin: 0;">
+                                <p class="mx-2" style="font-size:1.3em;"><?php echo ucfirst($row_topic ['username']); ?> </p>
+                            </span>
+                            <span class="container p-4">
+                                <h1 style="color: rgba(255,255,255,0.6);"><?php echo $row_topic ['topic']?></h1>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="container card bg-dark py-5 pt-4 pb-5 mb-5" style="border-radius: 8px;">
+                    <form action="" method="POST" class="text-end px-5">
+                        <textarea id="" name="comment" class="w-100" rows="1" style="font-size: 1.2em;padding:4px 2px; background: none; outline:none; border:none; border-bottom: 1px solid rgba(255,255,255,0.3); resize: none; color: rgba(255,255,255,0.6);" placeholder="Comment..."></textarea>
+                        <input type="hidden" name="topic_id_insert" value="<?php echo $row_topic ['topic_id']?>">
+                        <input type="submit" name="add_comment" value="Add Comment" class="text-end btn btn-secondary mt-2">
                         </form>
-
+                    </div>
                     <?php
                 }
             }
@@ -60,32 +101,45 @@ $_SESSION['user_id'];
             if(mysqli_num_rows($run_threads) > 0){
                 foreach($run_threads as $row_threads){
                     ?>
-
+                    <section class="container-fluid d-flex">
                         <!-----username nya FOR THE NAME---->
-                        <p><?php echo $row_threads ['username']?></p>
+                        <span class="d-flex flex-column justify-content-start align-items-center">
+                            <img src="<?php echo "uploads/" . $row_threads['image'] ?>" alt="image user" style="height:80px; width: 80px; border-radius: 50%; padding: 0; margin: 0;">
+                        </span>
                         <!---forda image ni user--->
-                        <img src="<?php echo "uploads/" . $row_threads['image'] ?>" alt="image user" width="100px" height="100px">
-                        <p><?php echo $row_threads ['comment']?></p>
+                        <div class="card bg-dark px-3 py-3 mx-3 w-100" style="border-left: 3px solid #990000;">
+                            <p class="p-0 m-0"><?php echo ucfirst($row_threads ['username']);?></p>
+                            <?php $d = strtotime($row_threads['date_time_created']); ?>
+                            <span class="text-muted"><?= date("F d, Y h:i a", $d);?></span>
+                            <span class="mt-4">
+                                <p><?php echo $row_threads ['comment']?></p>
 
-                        <!--edit comment -->
+                            </span>
+                            
                         
-                        <?php if($row_threads['user_id'] == $_SESSION['user_id'])
-                        {
-                            echo "<a href='edit-comment.php?comment_id=$row_threads[comment_id]'>Edit</a>";
-                        }else{
-                            echo "";
-                        } ?>
 
-                        <!----delete--->
+                            <!--edit comment -->
+                            <span class="d-flex">
+                            <?php if($row_threads['user_id'] == $_SESSION['user_id'])
+                            {
+                                echo "<a href='edit-comment.php?comment_id=$row_threads[comment_id]' style='color: rgba(255,255,255,0.6);'>Edit</a>";
+                                echo "<span class='vr mx-2' style='border:1px solid rgba(255,255,255,0.6);'></span>";
+                            
+                            }else{
+                                echo "";
+                            } ?>
 
-                        <?php if($row_threads['user_id'] == $_SESSION['user_id'])
-                        {
-                            echo "<a href='delete-comment.php?comment_id=$row_threads[comment_id]'>Delete</a>";
-                        }else{
-                            echo "";
-                        } ?>
+                            <!----delete--->
 
-
+                            <?php if($row_threads['user_id'] == $_SESSION['user_id'])
+                            {
+                                echo "<a href='delete-comment.php?comment_id=$row_threads[comment_id]' style='color: rgba(255,255,255,0.6);'>Delete</a>";
+                            }else{
+                                echo "";
+                            } ?>
+                            </span>
+                        </div>
+                    </section>
 
                     <?php
                 }
@@ -95,9 +149,12 @@ $_SESSION['user_id'];
         
     ?>
 
+    </main>
+    <div class="footer">
 
+    </div>
 
-    
+<script src="../src/js/app.js"></script>
 </body>
 </html>
 

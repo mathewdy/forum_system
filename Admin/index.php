@@ -1,7 +1,11 @@
 <?php
 session_start();
 include('../connection.php');
-
+if(empty($_SESSION['user_id'])){
+    echo "<script>window.location.href='login.php' </script>";
+}
+$_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 
 $count_mem = "SELECT COUNT(user_id) FROM users";
 $result = mysqli_query($conn,$count_mem);
@@ -30,7 +34,7 @@ $members = $row[0];
             </a>
             <ul class="navbar-nav navbar-align px-lg-4 px-sm-0">
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link active">Home</a>
+                    <a href="#" class="nav-link active">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">

@@ -61,7 +61,7 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
             </a>
             <ul class="navbar-nav navbar-align px-4">
                 <li class="nav-item">
-                    <a href="home.php" class="nav-link">Home</a>
+                    <a href="index.php" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">

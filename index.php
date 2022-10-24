@@ -36,7 +36,7 @@
 <div class="container-fluid p-0">
     <div id="banner">
         <section class="bg-dark vh-100 d-flex flex-column align-items-center justify-content-center">
-            <h3 class="display-4" style="color: rgba(255,255,255,0.6);">READY TO GAME?</h3>
+            <h3 class="display-5 text-center" style="color: rgba(255,255,255,0.6);">READY TO GAME?</h3>
             <h4 class="dislay-6" style="color: rgba(255,255,255,0.5);">The Next Level Gaming Experience.</h4>
             <a href="#game" class="btn btn-danger">Read More...</a>
         </section>

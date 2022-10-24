@@ -14,31 +14,35 @@ session_start();
     <link rel="stylesheet" href="../src/css/app.css">
     <title>Document</title>
 </head>
-<body>
-    <h1>Registration</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <label for="">First Name</label>
-        <br>
-        <input type="text" name="first_name">
-        <br>
-        <label for="">Last Name</label>
-        <br>
-        <input type="text" name="last_name">
-        <br>
-        <label for="">Image</label>
-        <br>
-        <input type="file" name="image">
-        <br>
-        <label for="">Username</label>
-        <br>
-        <input type="text" name="username">
-        <br>
-        <label for="">Password</label>
-        <br>
-        <input type="password" name="password">
-        <br>
-        <input type="submit" name="register" value="Create Account">
-    </form>
+<body style="background: rgba(0, 0, 0, 0.9);">
+    <div class="container d-flex justify-content-center align-items-center" style=" height: 50em;">
+        <div class="card bg-dark w-50 p-5">
+            <h1 class="pb-4" style="color:rgba(255,255,255,0.6);">Registration</h1>
+            <form action="" method="POST" enctype="multipart/form-data">
+                <label for="">First Name</label>
+                <br>
+                <input type="text" class="form-control" name="first_name">
+                <br>
+                <label for="">Last Name</label>
+                <br>
+                <input type="text" class="form-control" name="last_name">
+                <br>
+                <label for="">Image</label>
+                <br>
+                <input type="file" class="form-control" name="image">
+                <br>
+                <label for="">Username</label>
+                <br>
+                <input type="text" class="form-control" name="username">
+                <br>
+                <label for="">Password</label>
+                <br>
+                <input type="password" class="form-control" name="password">
+                <br>
+                <input type="submit" name="register" class="btn btn-primary" value="Create Account">
+            </form>
+        </div>
+    </div>
     <script src="../src/js/app.js"></script>
 </body>
 </html>

@@ -114,13 +114,13 @@
         <section>
             <div class="bg-dark text-center p-5">
                 <p style="font-size:3em; padding:0;">About Us</p>
-                <span class="px-5 py-0 m-0"><hr class="featurette-divider mt-0 pt-0"></span>
-                <span class="row align-items-center justify-content-center p-5">
-                    <div class="col-lg-6">
-                        <img src="src/img/photos/ng.png" alt="" height="400" width="400">
+                <span class="px-2 py-0 m-0"><hr class="featurette-divider mt-0 pt-0"></span>
+                <span class="row align-items-center justify-content-center mb-5">
+                    <div class="col-xxl-4 col-sm-12 p-4 text-sm-center">
+                        <img src="src/img/photos/ng.png" alt="" height="200" width="200">
 
                     </div>
-                    <div class="col-lg-6" style="text-align: justify; ">
+                    <div class="col-lg-6 col-sm-12" style="text-align: justify; ">
                         <p style="font-size: 1.3em; color: rgba(255,255,255,0.6);">
                             Nicolei Games is a indie game studio founded by Fernando Nicolei Esperida when he was a 14 years old. During his high school days he created 3 mobile games and uploaded on Google Play Store. His successful game so far was the "Bulalord Extreme" that gathered 300k downloads from the Google Play Store last 2014.
                         </p>

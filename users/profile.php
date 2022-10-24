@@ -95,13 +95,13 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
                     <h2 style="color: rgba(255,255,255,0.6);"><?= ucfirst($row['username']);?></h2>
                 </div>
                 <hr class="featurette-divider">
-                <div class="col-12 row px-5 gx-5 gy-3">
+                <div class="col-12 row gx-5 gy-3">
                     <h1 class="display-4" style="color: rgba(255,255,255,0.6);">Profile</h1>
-                    <span class="col-12 mb-2">
+                    <span class="col-lg-12 mb-2">
                         <label for="" class="h3" style="color: rgba(255,255,255,0.6);">First Name</label>
                         <input type="text" class="form-control" value="<?= ucfirst($row['first_name'])?>" readonly>
                     </span>
-                    <span class="col-12 mb-4">
+                    <span class="col-lg-12 mb-4">
                         <label for="" class="h3" style="color: rgba(255,255,255,0.6);">Last Name</label>
                         <input type="text" class="form-control" value="<?= ucfirst($row['last_name'])?>" readonly>
                     </span>

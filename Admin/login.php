@@ -58,7 +58,7 @@ $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' 
         foreach($run as $row){
 
             if($row['user_type'] == '0'){
-                echo "<script>alert('di ka pwede bobo user ka'); </script>";
+                echo "<script>alert('User unavailable'); </script>";
             }else{
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;

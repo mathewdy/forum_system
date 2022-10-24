@@ -60,7 +60,7 @@ if(isset($_POST['login'])){
         foreach($run as $row){
 
             if($row['user_type'] == '1'){
-                echo "<script>alert('di ka pwede bobo admin ka'); </script>";
+                echo "<script>alert('User unavailable'); </script>";
             }else{
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;

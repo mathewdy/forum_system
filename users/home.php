@@ -63,11 +63,18 @@ $user_id = $_SESSION['user_id'];
             </form>
         </h2>
         <div class="row pt-4">
+
+        <form action="search.php" method="POST">
+            <br>
+            <input type="text" name="search_topic" placeholder="Search">
+            <input type="submit" name="search" value="Search">
+        </form>
+
         <?php
 
         //view post muna bago mag comment
         $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
-        users.user_id , users.username , users.image , users.date_time_created
+        users.user_id , users.username , users.image 
         FROM posts
         LEFT JOIN users 
         ON posts.user_id = users.user_id";
@@ -89,8 +96,8 @@ $user_id = $_SESSION['user_id'];
                         <!--hindi pa tapos yung edit--->
                             <span class="ms-auto">
                                 <span>
-                                    <?php $d = strtotime($row['date_time_created']); ?>
-                                    <span class="text-muted"><?= date("F d, Y | h:i a", $d);?></span>
+                                    <span class="text-muted"><?php echo   $d = $row['date_time_created']; ?>
+                                </span>
                                 </span>
                                 <span class=" d-flex flex-row align-items-end justify-content-end">
                                     <?php 
@@ -135,6 +142,8 @@ $user_id = $_SESSION['user_id'];
 </html>
 
 <?php
+
+
 
 
 

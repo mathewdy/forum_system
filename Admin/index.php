@@ -35,6 +35,13 @@ $members = $row[0];
         <input type="text" name="topic">
     <input type="submit" name="add_post">
 </form>
+<br>
+
+<form action="search.php" method="POST">
+    <br>
+    <input type="text" name="search_topic" placeholder="Search">
+    <input type="submit" name="search" value="Search">
+</form>
 
 
 <?php
@@ -98,6 +105,8 @@ if(isset($_POST['add_post'])){
     }
 
 }
+
+
 
 
 ?>

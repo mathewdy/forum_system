@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2022 at 04:27 PM
+-- Generation Time: Oct 24, 2022 at 02:51 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,19 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `forum_system`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admins`
---
-
-CREATE TABLE `admins` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -54,8 +41,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `topic`, `date_time_created`, `date_time_updated`) VALUES
-(13, 20227339, 20229725, 'smaple post 1', '2022-10-23 10:05:46', '2022-10-23 10:05:46'),
-(14, 20224952, 202210657, 'post ko to 2 ', '2022-10-23 10:23:40', '2022-10-23 10:23:40');
+(27, 202210192, 20225820, 'tite', '2022-10-24 08:42:00', '2022-10-24 08:42:00'),
+(28, 202210192, 20222833, 'tite', '2022-10-24 08:44:00', '2022-10-24 08:44:00');
 
 -- --------------------------------------------------------
 
@@ -78,11 +65,7 @@ CREATE TABLE `threads` (
 --
 
 INSERT INTO `threads` (`id`, `user_id`, `topic_id`, `comment_id`, `comment`, `date_time_created`, `date_time_updated`) VALUES
-(25, 20227339, 20229725, 20238416, 'updated comment ko to', '2022-10-23 10:05:55', '2022-10-23 10:05:55'),
-(26, 20224952, 20229725, 202362646, 'mathew123 comment', '2022-10-23 10:06:50', '2022-10-23 10:06:50'),
-(27, 20227339, 20229725, 202345865, 'updated comment ulit ', '2022-10-23 10:12:26', '2022-10-23 10:12:26'),
-(28, 20224952, 202210657, 202312207, 'hahaha gago  123', '2022-10-23 10:23:45', '2022-10-23 10:23:45'),
-(29, 20227339, 202210657, 202316839, 'ttteee', '2022-10-23 10:24:10', '2022-10-23 10:24:10');
+(38, 202210192, 20222833, 202398274, 'sample', '2022-10-24 08:45:20', '2022-10-24 08:45:20');
 
 -- --------------------------------------------------------
 
@@ -98,6 +81,7 @@ CREATE TABLE `users` (
   `image` varchar(255) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `user_type` int(11) NOT NULL,
   `date_time_created` datetime NOT NULL,
   `date_time_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -106,19 +90,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_id`, `first_name`, `last_name`, `image`, `username`, `password`, `date_time_created`, `date_time_updated`) VALUES
-(3, 20224952, 'mathew', 'dalisay', 'dfd.jpg', 'mathew123', '123', '2022-10-23 10:02:35', '2022-10-23 10:02:35'),
-(4, 20227339, 'dorothy', 'jean', 'old ervin.jpg', 'melendez', '123', '2022-10-23 10:05:04', '2022-10-23 10:05:04');
+INSERT INTO `users` (`id`, `user_id`, `first_name`, `last_name`, `image`, `username`, `password`, `user_type`, `date_time_created`, `date_time_updated`) VALUES
+(9, 202210192, 'remara', 'gaxypo', 'dfd.jpg', 'mathew123', '123', 0, '2022-10-24 12:49:08', '2022-10-24 12:49:08'),
+(10, 20229666, 'qypuh', 'senifewyxe', 'old ervin.jpg', 'melendez', '123', 1, '2022-10-24 12:51:18', '2022-10-24 12:51:18');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `posts`
@@ -146,28 +124,22 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

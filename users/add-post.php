@@ -7,7 +7,7 @@ if(isset($_POST['add_post'])){
     $user_id = $_SESSION['user_id'];
     $topic_id = "2022".rand('1','10') . substr(str_shuffle(str_repeat("0123456789", 5)), 0, 3) ;
     date_default_timezone_set("Asia/Manila");
-    $time= date("h:i:s", time());
+    $time= date("h:i:A", time());
     $date = date('y-m-d');
     $topic = $_POST['topic'];
 

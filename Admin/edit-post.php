@@ -35,7 +35,7 @@ $user_id = $_SESSION['user_id'];
         users.user_id , users.username , users.image , users.date_time_created
         FROM posts
         LEFT JOIN users 
-        ON posts.user_id = users.user_id WHERE posts.user_id ='$user_id' AND posts.topic_id = '$topic_id' ";
+        ON posts.user_id = users.user_id WHERE posts.topic_id = '$topic_id' ";
 
         $run = mysqli_query($conn,$sql);
         if(mysqli_num_rows($run) > 0){
@@ -76,11 +76,11 @@ if(isset($_POST['update'])){
     $topic = $_POST['topic'];
 
 
-    $sql_update = "UPDATE posts SET topic = '$topic', date_time_updated= '$date $time' WHERE user_id = '$user_id' AND topic_id = '$topic_id'";
+    $sql_update = "UPDATE posts SET topic = '$topic', date_time_updated= '$date $time' WHERE topic_id = '$topic_id'";
     $run_update = mysqli_query($conn,$sql_update);
 
     if($run_update){
-        echo "<script>window.location.href='home.php' </script>";
+        echo "<script>window.location.href='index.php' </script>";
     }else{
         echo "error" . $conn->error;
     }

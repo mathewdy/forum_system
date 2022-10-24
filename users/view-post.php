@@ -109,7 +109,8 @@ $_SESSION['user_id'];
                         <!---forda image ni user--->
                         <div class="card bg-dark px-3 py-3 mx-3 w-100" style="border-left: 3px solid #990000;">
                             <p class="p-0 m-0"><?php echo ucfirst($row_threads ['username']);?></p>
-                            <?php $d = strtotime($row_threads['date_time_created']); ?>
+                            <?php 
+                            $d = strtotime($row_threads['date_time_created']); ?>
                             <span class="text-muted"><?= date("F d, Y h:i a", $d);?></span>
                             <span class="mt-4">
                                 <p><?php echo $row_threads ['comment']?></p>
@@ -165,7 +166,6 @@ if(isset($_POST['add_comment'])){
     $time= date("h:i:s", time());
     $date = date('y-m-d');
     $comment_id = "2023".rand('2','105') . substr(str_shuffle(str_repeat("0123456789", 5)), 0, 3) ;
-    date_default_timezone_set("Asia/Manila");
     $comment = $_POST['comment'];
     $topic_id_insert = $_POST['topic_id_insert'];
     $user_id = $_SESSION['user_id'];

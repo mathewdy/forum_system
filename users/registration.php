@@ -60,10 +60,11 @@ if(isset($_POST['register'])){
 
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    
 
-    $hashed_password = password_hash($password,PASSWORD_DEFAULT);
+    $username = mysqli_real_escape_string($conn,$_POST['username']);
+    $password = mysqli_real_escape_string($conn,$_POST['password']);
+    $password = md5($password);
 
     //image
     $image = $_FILES['image']['name'];
@@ -88,12 +89,12 @@ if(isset($_POST['register'])){
             echo "<script>alert('Select other picture') </script>";
             $filename = $_FILES['image']['name'];
         }else{
-            $query_registration = "INSERT INTO users (user_id,first_name,last_name,image,username,password,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$last_name', '$image', '$username', '$hashed_password' , '$date $time' , '$date $time')";
+            $query_registration = "INSERT INTO users (user_id,first_name,last_name,image,username,password,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$last_name', '$image', '$username', '$password' , '$date $time' , '$date $time')";
             $run_sql = mysqli_query($conn,$query_registration);
+            $_SESSION['user_id'] = $user_id;
 
             if($run_sql){
                 move_uploaded_file($_FILES["image"]["tmp_name"], "uploads/".$_FILES["image"]["name"]);
-                echo "<script>alert('Registration Successful') </script>";
                 echo "<script>window.location.href='question.php'</script>";
             }else{
                 echo "error" . $conn->error;

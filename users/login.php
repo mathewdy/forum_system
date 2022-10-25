@@ -40,12 +40,6 @@ session_start();
                         <a href="registration.php" style="color:rgba(255,255,255,0.6); margin-left: 12px;">No account? Register here.</a>
                     </span>
 
-                     
-                    <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
-                        <input type="submit" name="login" value="Log In" style="padding: 4px 20px; background: rgba(255,255,255,0.6); outline: none; border: none;">
-                        <a href="forget-pass.php" style="color:rgba(255,255,255,0.6); margin-left: 12px;">Forget Password</a>
-                    </span>
-                    
                 </form>
         </div>
     </div>
@@ -56,8 +50,9 @@ session_start();
 <?php
 if(isset($_POST['login'])){
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = mysqli_real_escape_string($conn,$_POST['username']);
+    $password = mysqli_real_escape_string($conn,$_POST['password']);
+    $password = md5($password);
 
     $sql = "SELECT * FROM users WHERE username='$username' LIMIT 1";
     $run = mysqli_query($conn,$sql);
@@ -70,24 +65,11 @@ if(isset($_POST['login'])){
             }
             else
             {
-                if(password_verify($password, $row['password']))
-                {
 
-                    echo "<script>alert('wiws'); </script>";
-
-
-                    $_SESSION['username'] = $username;
-                    $_SESSION['password'] = $password;
-                    $_SESSION['user_id'] = $row ['user_id'];
-                    header("Location: home.php");
-                }
-
-                else{
-                    echo "<script>alert('invalid credential'); </script>";
-
-                }
-
-               
+                $_SESSION['username'] = $username;
+                $_SESSION['user_id'] = $row ['user_id'];
+                header("Location: home.php");
+                
             }
           
         }
@@ -96,6 +78,10 @@ if(isset($_POST['login'])){
     }
 }
 
+// $_SESSION['username'] = $username;
+// $_SESSION['password'] = $password;
+// $_SESSION['user_id'] = $row ['user_id'];
+// header("Location: home.php");
 ob_end_flush();
 
 ?>

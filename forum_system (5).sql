@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2022 at 02:51 PM
+-- Generation Time: Oct 25, 2022 at 07:11 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -36,13 +36,48 @@ CREATE TABLE `posts` (
   `date_time_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `posts`
+-- Table structure for table `questions`
 --
 
-INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `topic`, `date_time_created`, `date_time_updated`) VALUES
-(27, 202210192, 20225820, 'tite', '2022-10-24 08:42:00', '2022-10-24 08:42:00'),
-(28, 202210192, 20222833, 'tite', '2022-10-24 08:44:00', '2022-10-24 08:44:00');
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `user_id` int(50) NOT NULL,
+  `question_1` varchar(100) NOT NULL,
+  `answer_1` varchar(100) NOT NULL,
+  `question_2` varchar(100) NOT NULL,
+  `answer_2` varchar(100) NOT NULL,
+  `date_time_created` datetime NOT NULL,
+  `date_time_updated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `user_id`, `question_1`, `answer_1`, `question_2`, `answer_2`, `date_time_created`, `date_time_updated`) VALUES
+(8, 20221056, 'What was your favorite food as a child?', '123', 'What is the name of your first pet?', '1', '2022-10-26 01:00:38', '2022-10-26 01:00:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sample`
+--
+
+CREATE TABLE `sample` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sample`
+--
+
+INSERT INTO `sample` (`id`, `username`, `password`) VALUES
+(10, 'sample', '$2y$10$DC/2Xv4TOdeXG4U62CuXaePrIWLyvbpReq4mLcNwhmwViAwQsP9fO');
 
 -- --------------------------------------------------------
 
@@ -60,13 +95,6 @@ CREATE TABLE `threads` (
   `date_time_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `threads`
---
-
-INSERT INTO `threads` (`id`, `user_id`, `topic_id`, `comment_id`, `comment`, `date_time_created`, `date_time_updated`) VALUES
-(38, 202210192, 20222833, 202398274, 'sample', '2022-10-24 08:45:20', '2022-10-24 08:45:20');
-
 -- --------------------------------------------------------
 
 --
@@ -80,7 +108,7 @@ CREATE TABLE `users` (
   `last_name` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(225) NOT NULL,
   `user_type` int(11) NOT NULL,
   `date_time_created` datetime NOT NULL,
   `date_time_updated` datetime NOT NULL
@@ -91,8 +119,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `first_name`, `last_name`, `image`, `username`, `password`, `user_type`, `date_time_created`, `date_time_updated`) VALUES
-(9, 202210192, 'remara', 'gaxypo', 'dfd.jpg', 'mathew123', '123', 0, '2022-10-24 12:49:08', '2022-10-24 12:49:08'),
-(10, 20229666, 'qypuh', 'senifewyxe', 'old ervin.jpg', 'melendez', '123', 1, '2022-10-24 12:51:18', '2022-10-24 12:51:18');
+(28, 20221056, 'posytovexuhaha', 'qipehydybehaha', 'ta.png', 'admin123', '$2y$10$VWoOxQKvJfOzUmccfdeDKecX3nfOIGck1uGT/XMfyBwAcv.MG3XuW', 1, '2022-10-26 01:00:34', '2022-10-26 01:00:34');
 
 --
 -- Indexes for dumped tables
@@ -104,6 +131,20 @@ INSERT INTO `users` (`id`, `user_id`, `first_name`, `last_name`, `image`, `usern
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `user_id_2` (`user_id`);
+
+--
+-- Indexes for table `sample`
+--
+ALTER TABLE `sample`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `threads`
@@ -127,19 +168,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `sample`
+--
+ALTER TABLE `sample`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
@@ -150,6 +203,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `threads`

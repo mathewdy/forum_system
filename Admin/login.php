@@ -10,27 +10,11 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../src/img/icons/favicon.ico">
+    <link rel="stylesheet" href="../src/css/custom.css">
     <link rel="stylesheet" href="../src/css/app.css">
     <title>Soul Inc.</title>
 </head>
 <style>
-    @font-face {
-        font-family: 'Bearskin-DEMO-Regular';
-        src:url('../src/fonts/Bearskin/Bearskin-DEMO-Regular.ttf.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-    .nav-link{
-        font-family: 'Bearskin-DEMO-Regular';
-        font-size: 1.3em;
-        letter-spacing: 2px;
-    }
-    .nav-link .active{
-        background: #990000;
-    }
-    p{
-        letter-spacing: 1px;
-    }
     input[name=login]:hover{
         color: rgba(255,255,255,0.6);
     }
@@ -65,7 +49,9 @@ session_start();
                         <input type="submit" name="login" value="Log In" class="btn btn-secondary px-4">
                         <a href="registration.php" class="registration">No account? Register here.</a>
                     </span>
-
+                    <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
+                        <a href="forgot-password.php" class="registration">Forgot Password?</a>
+                    </span>
                 </form>
         </div>
     </div>
@@ -75,28 +61,26 @@ session_start();
 <?php
 if(isset($_POST['login'])){
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
+    $sql_select = "SELECT * FROM users WHERE username = '$username'";
+    $run_select = mysqli_query($conn,$sql_select);
 
-$sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
-    $run = mysqli_query($conn,$sql);
-
-    if(mysqli_num_rows($run) > 0){
-        foreach($run as $row){
-
-            if($row['user_type'] == '0'){
-                echo "<script>alert('User unavailable'); </script>";
-            }else{
-                $_SESSION['username'] = $username;
-                $_SESSION['password'] = $password;
+    if(mysqli_num_rows($run_select)> 0){
+        while($row = mysqli_fetch_assoc($run_select)){
+            if(password_verify($password, $row['password'])){
                 $_SESSION['user_id'] = $row ['user_id'];
-                header("Location: index.php");
+                
+                $_SESSION['username'] = $username;
+                echo "pasok";
+                header("location: index.php");
+            }else{
+                echo "<script>alert('User does not exists'); </script>";
             }
-          
         }
     }else{
-        echo "User not found" . $conn->error;
+        echo "<script>alert('User does not exists'); </script>";
     }
 }
 

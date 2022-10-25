@@ -181,6 +181,7 @@ $user_id = $_SESSION['user_id'];
         }
     }else{
         echo "<script>alert('Topic Unavailable'); </script>";
+        echo "<script>window.location.href='home.php' </script>";
         
     }
     ?>

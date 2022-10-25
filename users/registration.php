@@ -90,6 +90,9 @@ session_start();
                     <a href="login.php" class="registration">Already have an account?</a>
                 </div>
             </form>
+                <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
+                    <a href="login.php" class="registration">Log in</a>
+                </span>
         </div>
     </div>
     <script src="../src/js/app.js"></script>
@@ -111,18 +114,18 @@ if(isset($_POST['register'])){
     $last_name = $_POST['last_name'];
     
 
-    $username = mysqli_real_escape_string($conn,$_POST['username']);
-    $password = mysqli_real_escape_string($conn,$_POST['password']);
-    $password = md5($password);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $new_password = password_hash($password,PASSWORD_DEFAULT);
 
     //image
     $image = $_FILES['image']['name'];
 
-    $query_check = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $query_check = "SELECT * FROM users WHERE username='$username'";
     $run_check = mysqli_query($conn,$query_check);
     
     if(mysqli_num_rows($run_check) > 0){
-        echo "<script>alert('Unit Already Added')</script>";
+        echo "<script>alert('User Already Added')</script>";
         exit();
     }
 
@@ -138,7 +141,7 @@ if(isset($_POST['register'])){
             echo "<script>alert('Select other picture') </script>";
             $filename = $_FILES['image']['name'];
         }else{
-            $query_registration = "INSERT INTO users (user_id,first_name,last_name,image,username,password,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$last_name', '$image', '$username', '$password' , '$date $time' , '$date $time')";
+            $query_registration = "INSERT INTO users (user_id,first_name,last_name,image,username,password,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$last_name', '$image', '$username', '$new_password' , '$date $time' , '$date $time')";
             $run_sql = mysqli_query($conn,$query_registration);
             $_SESSION['user_id'] = $user_id;
 

@@ -61,6 +61,9 @@ session_start();
                     <a href="login.php" class="registration">Already have an account?</a>
                 </div>
             </form>
+            <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
+                    <a href="login.php" class="registration">Log in</a>
+                </span>
         </div>
     </div>
     <script src="../src/js/app.js"></script>
@@ -80,12 +83,14 @@ if(isset($_POST['register'])){
 
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
+   
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $new_password = password_hash($password,PASSWORD_DEFAULT);
     //image
     $image = $_FILES['image']['name'];
 
-    $query_check = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $query_check = "SELECT * FROM users WHERE username='$username'";
     $run_check = mysqli_query($conn,$query_check);
     
     if(mysqli_num_rows($run_check) > 0){
@@ -104,13 +109,13 @@ if(isset($_POST['register'])){
         if(file_exists("uploads/" .$_FILES['image']['name'])){
             $filename = $_FILES['image']['name'];
         }else{
-            $query_registration = "INSERT INTO users (user_id,first_name,last_name,image,username,password,user_type,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$last_name', '$image', '$username', '$password', '$user_type' , '$date $time' , '$date $time')";
+            $query_registration = "INSERT INTO users (user_id,first_name,last_name,image,username,password,user_type,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$last_name', '$image', '$username', '$new_password', '$user_type' , '$date $time' , '$date $time')";
             $run_sql = mysqli_query($conn,$query_registration);
+            $_SESSION['user_id'] = $user_id;
 
             if($run_sql){
                 move_uploaded_file($_FILES["image"]["tmp_name"], "../users/uploads/".$_FILES["image"]["name"]);
-                echo "<script>alert('Registration Successful') </script>";
-                echo "<script>window.location.href='login.php'</script>";
+                echo "<script>window.location.href='question.php'</script>";
             }else{
                 echo "error" . $conn->error;
             }

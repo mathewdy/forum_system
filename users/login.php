@@ -81,6 +81,9 @@ session_start();
                         <a href="registration.php" class="registration">No account? Register here.</a>
                     </span>
 
+                    <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
+                        <a href="forgot-password.php" class="registration">Forgot Password?</a>
+                    </span>
                 </form>
         </div>
     </div>
@@ -91,31 +94,26 @@ session_start();
 <?php
 if(isset($_POST['login'])){
 
-    $username = mysqli_real_escape_string($conn,$_POST['username']);
-    $password = mysqli_real_escape_string($conn,$_POST['password']);
-    $password = md5($password);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE username='$username' LIMIT 1";
-    $run = mysqli_query($conn,$sql);
+    $sql_select = "SELECT * FROM users WHERE username = '$username'";
+    $run_select = mysqli_query($conn,$sql_select);
 
-    if(mysqli_num_rows($run) > 0){
-        foreach($run as $row){
-
-            if($row['user_type'] == '1'){
-                echo "<script>alert('User unavailable'); </script>";
-            }
-            else
-            {
-
-                $_SESSION['username'] = $username;
+    if(mysqli_num_rows($run_select)> 0){
+        while($row = mysqli_fetch_assoc($run_select)){
+            if(password_verify($password, $row['password'])){
                 $_SESSION['user_id'] = $row ['user_id'];
-                header("Location: home.php");
                 
+                $_SESSION['username'] = $username;
+                echo "pasok";
+                header("location: home.php");
+            }else{
+                echo "<script>alert('User does not exists'); </script>";
             }
-          
         }
     }else{
-        echo "<script>alert('User not found'); </script>";
+        echo "<script>alert('User does not exists'); </script>";
     }
 }
 

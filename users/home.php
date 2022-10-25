@@ -7,6 +7,7 @@ if(empty($_SESSION['user_id'])){
 }
 $_SESSION['user_id'];
 $user_id = $_SESSION['user_id'];
+
 ?>
 
 <!DOCTYPE html>

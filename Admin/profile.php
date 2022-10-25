@@ -133,10 +133,18 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
                                     if(mysqli_num_rows($run) > 0){
                                         foreach ($run as $row){
                                             ?>
+                                                    <span>
+                                                        <label class="h6" style="color: rgba(255,255,255,0.6);" for="">Note: Once you updated your info, it will be automatically logged out.</label> 
+                                                        
+                                                    </span>
                                                     
                                                     <span>
                                                         <label class="h6" style="color: rgba(255,255,255,0.6);" for="">Username</label> 
                                                         <input type="text" class="form-control" name="username" value="<?php echo $row ['username']?>">
+                                                    </span>
+                                                    <span>
+                                                        <label class="h6" style="color: rgba(255,255,255,0.6);" for="">Password</label> 
+                                                        <input type="password" class="form-control" name="password" value="<?php echo $row ['password']?>">
                                                     </span>
                                                     <br>
                                                     
@@ -148,7 +156,7 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
                                                     <br>
                                                     <input type="text" class="form-control" name="last_name" value="<?php echo $row ['last_name']?>">
                                                     <br>
-                                                    <img src="<?php echo "uploads/".$row['image']?>" width="100px" height="100px" alt="image" style="border-radius: 50%;">
+                                                    <img src="<?php echo "../users/uploads/".$row['image']?>" width="100px" height="100px" alt="image" style="border-radius: 50%;">
                                                     <input type="file" name="image">
                                                     <input type="hidden" name="old_image" value="<?php echo $row ['image']?>">
 
@@ -191,6 +199,9 @@ if(isset($_POST['update'])){
     $date = date('y-m-d');
 
     $username = $_POST['username'];
+    $password = $_POST['password'];
+    $new_password = password_hash($password, PASSWORD_DEFAULT);
+
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     
@@ -212,14 +223,14 @@ if(isset($_POST['update'])){
         echo "<script>window.location.href='profie.php' </script>";
     }else{
         
-        $query_update = "UPDATE users SET username = '$username', first_name = '$first_name' , last_name = '$last_name' , image= '$update_filename' WHERE user_id = '$user_id' ";
+        $query_update = "UPDATE users SET username = '$username', password = '$new_password', first_name = '$first_name' , last_name = '$last_name' , image= '$update_filename' WHERE user_id = '$user_id' ";
         $run_update = mysqli_query($conn,$query_update);
 
         if($run_update){
             move_uploaded_file($_FILES["image"]["tmp_name"], "../users/uploads/".$_FILES["image"]["name"]);
             unlink("../users/uploads/". $old_image);
             echo "<script>alert('Profile updated!') </script>";
-            echo "<script>window.location.href='index.php' </script>";
+            echo "<script>window.location.href='logout.php' </script>";
             // echo "<script>window.location.href='Units.php' </script>";
         }else{
             echo "error" . $conn->error;

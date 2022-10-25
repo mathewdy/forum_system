@@ -37,7 +37,9 @@ session_start();
                         <input type="submit" name="login" value="Log In" style="padding: 4px 20px; background: rgba(255,255,255,0.6); outline: none; border: none;">
                         <a href="registration.php" style="color:rgba(255,255,255,0.6); margin-left: 12px;">No account? Register here.</a>
                     </span>
-                    
+                    <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
+                        <a href="forgot-password.php" class="registration">Forgot Password?</a>
+                    </span>
                 </form>
         </div>
     </div>
@@ -47,28 +49,26 @@ session_start();
 <?php
 if(isset($_POST['login'])){
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
+    $sql_select = "SELECT * FROM users WHERE username = '$username'";
+    $run_select = mysqli_query($conn,$sql_select);
 
-$sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
-    $run = mysqli_query($conn,$sql);
-
-    if(mysqli_num_rows($run) > 0){
-        foreach($run as $row){
-
-            if($row['user_type'] == '0'){
-                echo "<script>alert('User unavailable'); </script>";
-            }else{
-                $_SESSION['username'] = $username;
-                $_SESSION['password'] = $password;
+    if(mysqli_num_rows($run_select)> 0){
+        while($row = mysqli_fetch_assoc($run_select)){
+            if(password_verify($password, $row['password'])){
                 $_SESSION['user_id'] = $row ['user_id'];
-                header("Location: index.php");
+                
+                $_SESSION['username'] = $username;
+                echo "pasok";
+                header("location: index.php");
+            }else{
+                echo "<script>alert('User does not exists'); </script>";
             }
-          
         }
     }else{
-        echo "User not found" . $conn->error;
+        echo "<script>alert('User does not exists'); </script>";
     }
 }
 

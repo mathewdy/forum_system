@@ -14,10 +14,74 @@ session_start();
     <link rel="stylesheet" href="../src/css/app.css">
     <title>Document</title>
 </head>
+<style>
+    @font-face {
+        font-family: 'Bearskin-DEMO-Regular';
+        src:url('../src/fonts/Bearskin/Bearskin-DEMO-Regular.ttf.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    body{
+        font-family:'Times New Roman', Times, serif;
+    }
+    .nav-link{
+        font-family: 'Bearskin-DEMO-Regular';
+        font-size: 1.3em;
+        letter-spacing: 2px;
+    }
+    .nav-link .active{
+        background: #990000;
+    }
+    p{
+        letter-spacing: 1px;
+    }
+    input[name=login]:hover{
+        color: rgba(255,255,255,0.6);
+    }
+    label{
+        letter-spacing: 1px;
+        font-size: 1.5em;
+        font-family:'Bearskin-DEMO-Regular';
+    }
+    .registration, .btn{
+        font-family:'Bearskin-DEMO-Regular';
+        letter-spacing: 1px;
+        font-size: 1.5em;
+    }
+</style>
 <body style="background: rgba(0, 0, 0, 0.9);">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand py-0" href="#">
+            <img src="../src/img/photos/soul_inc_2.png" alt="" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto nav-pills">
+            <li class="nav-item">
+            <a class="nav-link px-4" href="../index.php">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link px-4" href="home.php">Forum</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link px-4" href="../about.php">About</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link px-4" href="home.php">Contact us</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active px-4" aria-current="page" href="registration.php">Sign up</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
     <div class="container d-flex justify-content-center align-items-center" style=" height: 50em;">
         <div class="card bg-dark w-50 p-5">
-            <h1 class="pb-4" style="color:rgba(255,255,255,0.6);">Registration</h1>
+            <h1 class="pb-4" style="color:rgba(255,255,255,0.6); font-family: 'Bearskin-DEMO-Regular';">Registration</h1>
             <form action="" method="POST" enctype="multipart/form-data">
                 <label for="">First Name</label>
                 <br>
@@ -39,7 +103,7 @@ session_start();
                 <br>
                 <input type="password" class="form-control" name="password">
                 <br>
-                <input type="submit" name="register" class="btn btn-primary" value="Create Account">
+                <input type="submit" name="register" class="btn btn-secondary" value="Create Account">
             </form>
         </div>
     </div>

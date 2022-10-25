@@ -11,30 +11,12 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../src/img/icons/favicon.ico">
+    <link rel="stylesheet" href="../src/css/custom.css">
     <link rel="stylesheet" href="../src/css/app.css">
-    <title>Document</title>
+    <title>Soul Inc.</title>
 </head>
 <style>
-    @font-face {
-        font-family: 'Bearskin-DEMO-Regular';
-        src:url('../src/fonts/Bearskin/Bearskin-DEMO-Regular.ttf.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-    body{
-        font-family:'Times New Roman', Times, serif;
-    }
-    .nav-link{
-        font-family: 'Bearskin-DEMO-Regular';
-        font-size: 1.3em;
-        letter-spacing: 2px;
-    }
-    .nav-link .active{
-        background: #990000;
-    }
-    p{
-        letter-spacing: 1px;
-    }
     input[name=login]:hover{
         color: rgba(255,255,255,0.6);
     }
@@ -79,12 +61,12 @@ session_start();
         </div>
     </div>
     </nav>
-    <div class="container d-flex justify-content-center align-items-center mt-4">
-        <div class="card bg-dark py-5 px-0">
+    <div class="container-fluid d-flex justify-content-center align-items-center mt-4">
+        <div class="card bg-dark py-lg-5 px-0">
                 <div class="card-header bg-dark text-center pb-0 mb-0" style="border:none;">
                     <img src="../src/img/photos/soul_inc.png" alt="" style="max-height:150px;">
                 </div>
-                <form action="" method="POST" class="row d-flex justify-content-center py-5 px-0">
+                <form action="" method="POST" class="row d-flex justify-content-center py-lg-5 px-0">
                     <div class="col-lg-7 col-md-12 mb-4 text-start-lg">
                         <label for="">Username</label>
                         <input type="text" name="username" class="form-control" style="outline: none;">

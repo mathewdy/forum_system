@@ -22,19 +22,31 @@ $members = $row[0];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../src/img/icons/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../src/css/custom.css">
     <link rel="stylesheet" href="../src/css/app.css">
     <title>Soul Inc.</title>
 </head>
 <body style="background: rgba(0, 0, 0, 0.9);">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="navbar-collapse collapse">
-            <a href="index.php" class="navbar-brand p-0 px-lg-4 px-sm-0">
-                <img src="../src/img/photos/soul_inc_2.png" alt="" height="50">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand py-0" href="#">
+                <img src="../src/img/photos/soul_inc_2.png" alt="" height="40">
             </a>
-            <ul class="navbar-nav navbar-align px-lg-4 px-sm-0">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto nav-pills">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">Home</a>
+                    <a class="nav-link active px-4" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-4" href="about.php">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-4" href="users/home.php">Contact us</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
@@ -50,9 +62,10 @@ $members = $row[0];
                         <a class="dropdown-item text-light" href="logout.php">Log out</a>
                     </div>
                 </li>
-			</ul>
-		</div>
-	</nav>
+            </ul>
+            </div>
+        </div>
+    </nav>
     <main class="container mb-5" style="color:rgba(255,255,255,0.6);">
         <section class="pt-5">
             <div class="card bg-dark w-25 p-4">
@@ -97,7 +110,7 @@ $members = $row[0];
                 ?>
                     <div class="card bg-dark p-4" style="border:none; border-left: 3px solid #990000;">
                         <span class="d-flex">
-                            <img src="<?= "../users/uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
+                            <img loading="lazy" src="<?= "../users/uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
                             <span class="px-3">
                                 <p class="p-0 m-0"><?= $row['username']?></p>
                                 <a href="view-post.php?topic_id=<?= $row ['topic_id']?>" style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
@@ -140,7 +153,7 @@ $members = $row[0];
                                                                         <img src="<?php echo "../users/uploads/" . $row['image'] ?>" alt="image user" style="height:80px; width: 80px; border-radius: 50%; padding: 0; margin: 0;">
                                                                     </span>
                                                                     <div class="card bg-dark px-3 py-3 mx-3 w-100">
-                                                                        <p class="p-0 m-0"><?php echo ucfirst($row ['username']);?></p>
+                                                                        <p class="p-0 m-0" style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><?php echo ucfirst($row ['username']);?></p>
                                                                         <span class="mt-2">
                                                                             <input type="text" name="topic" class="w-100" value="<?php echo $row['topic']?>">
                                                                             <br>
@@ -185,7 +198,12 @@ $members = $row[0];
         ?>
         </div>   
     </main>
-
+    <div class="footer">
+        <section class="bg-dark py-4 text-center">
+            <img src="../src/img/photos/soul_inc.png" alt="" srcset="" style="height: 7em;">
+            <p class="h3" style="color:rgba(255,255,255,0.6);">All Rights Reserved @ 2022</p>
+        </section>
+    </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

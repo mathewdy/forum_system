@@ -11,35 +11,55 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../src/img/icons/favicon.ico">
+    <link rel="stylesheet" href="../src/css/custom.css">
     <link rel="stylesheet" href="../src/css/app.css">
-    <title>Document</title>
+    <title>Soul Inc.</title>
 </head>
+<style>
+    input[name=login]:hover{
+        color: rgba(255,255,255,0.6);
+    }
+    label{
+        letter-spacing: 1px;
+        font-size: 1.5em;
+        font-family:'Bearskin-DEMO-Regular';
+    }
+    .registration, .btn{
+        font-family:'Bearskin-DEMO-Regular';
+        letter-spacing: 1px;
+        font-size: 1.5em;
+    }
+</style>
 <body style="background: rgba(0, 0, 0, 0.9);">
-    <div class="container d-flex justify-content-center align-items-center" style=" height: 50em;">
-        <div class="card bg-dark w-50 p-5">
-            <h1 class="pb-4" style="color:rgba(255,255,255,0.6);">Registration</h1>
-            <form action="" method="POST" enctype="multipart/form-data">
-                <label for="">First Name</label>
-                <br>
-                <input type="text" class="form-control" name="first_name">
-                <br>
-                <label for="">Last Name</label>
-                <br>
-                <input type="text" class="form-control" name="last_name">
-                <br>
-                <label for="">Image</label>
-                <br>
-                <input type="file" class="form-control" name="image">
-                <br>
-                <label for="">Username</label>
-                <br>
-                <input type="text" class="form-control" name="username">
-                <br>
-                <label for="">Password</label>
-                <br>
-                <input type="password" class="form-control" name="password">
-                <br>
-                <input type="submit" name="register" class="btn btn-primary" value="Create Account">
+    <div class="container p-lg-5 d-flex justify-content-center align-items-center" style=" height: 50em;">
+        <div class="card bg-dark w-lg-50 p-5">
+            <h1 class=" display-5 text-center" style="color:rgba(255,255,255,0.6); font-family: 'Bearskin-DEMO-Regular';">Registration</h1>
+            <form action="" method="POST" enctype="multipart/form-data" class="row p-lg-5">
+                <div class="col-lg-6">
+                    <label for="">First Name</label>
+                    <input type="text" class="form-control" name="first_name">
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Last Name</label>
+                    <input type="text" class="form-control" name="last_name">
+                </div>
+                <div class="col-lg-12">
+                    <label for="">Image</label>
+                    <input type="file" class="form-control" name="image">
+                </div>
+                <div class="col-lg-12">
+                    <label for="">Username</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <div class="col-lg-12 mb-4">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="col-lg-12 d-flex justify-content-between align-items-center">
+                    <input type="submit" name="register" class="btn btn-secondary" value="Create Account">
+                    <a href="login.php" class="registration">Already have an account?</a>
+                </div>
             </form>
         </div>
     </div>

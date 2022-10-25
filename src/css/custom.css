@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Bearskin-DEMO-Regular';
+    src:url('../fonts/Bearskin/Bearskin-DEMO-Regular.ttf.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.nav-link{
+    font-family: 'Bearskin-DEMO-Regular';
+    font-size: 1.3em;
+    letter-spacing: 2px;
+}
+.nav-link .active{
+    background: #990000;
+}
+p{  
+    font-family: 'Bearskin-DEMO-Regular';
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.6);
+}

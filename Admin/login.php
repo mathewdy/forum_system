@@ -70,6 +70,7 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($run_select)> 0){
         while($row = mysqli_fetch_assoc($run_select)){
             if(password_verify($password, $row['password'])){
+                
                 $_SESSION['user_id'] = $row ['user_id'];
                 
                 $_SESSION['username'] = $username;

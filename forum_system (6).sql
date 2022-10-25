@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 07:11 PM
+-- Generation Time: Oct 25, 2022 at 11:36 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -58,7 +58,8 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `user_id`, `question_1`, `answer_1`, `question_2`, `answer_2`, `date_time_created`, `date_time_updated`) VALUES
-(8, 20221056, 'What was your favorite food as a child?', '123', 'What is the name of your first pet?', '1', '2022-10-26 01:00:38', '2022-10-26 01:00:38');
+(8, 20221056, 'What was your favorite food as a child?', '123', 'What is the name of your first pet?', '1', '2022-10-26 01:00:38', '2022-10-26 01:00:38'),
+(9, 20229585, 'What was your first car?', '123', 'What was your favorite food as a child?', '12', '2022-10-26 05:24:03', '2022-10-26 05:24:03');
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `first_name`, `last_name`, `image`, `username`, `password`, `user_type`, `date_time_created`, `date_time_updated`) VALUES
-(28, 20221056, 'posytovexuhaha', 'qipehydybehaha', 'ta.png', 'admin123', '$2y$10$VWoOxQKvJfOzUmccfdeDKecX3nfOIGck1uGT/XMfyBwAcv.MG3XuW', 1, '2022-10-26 01:00:34', '2022-10-26 01:00:34');
+(28, 20221056, 'posytovexuhaha', 'qipehydybehaha', 'ta.png', 'admin123', '$2y$10$VWoOxQKvJfOzUmccfdeDKecX3nfOIGck1uGT/XMfyBwAcv.MG3XuW', 1, '2022-10-26 01:00:34', '2022-10-26 01:00:34'),
+(29, 20229585, 'wapodyvimu', 'lojic', 'dk.jpg', 'mathew123', '$2y$10$q4KAna5lqDQKFOmVW00i7O9CeWl/Hy83tACeVC6SHvG3uzCUeCDL.', 0, '2022-10-26 05:23:52', '2022-10-26 05:23:52');
 
 --
 -- Indexes for dumped tables
@@ -174,7 +176,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `sample`
@@ -192,7 +194,7 @@ ALTER TABLE `threads`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables

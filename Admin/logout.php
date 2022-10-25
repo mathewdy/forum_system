@@ -1,11 +1,9 @@
-<?php   
-include('connection.php');
+<?php
 session_start();
+$_SESSION['username'];
+unset($_SESSION['username']);
 
-if(session_destroy()){
-unset($_SESSION['user_id']);
-header("Location: login.php");
-exit();
-}
+session_destroy();
+echo "<script>window.location.href='login.php' </script>";
 
 ?>

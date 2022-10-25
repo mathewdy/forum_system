@@ -98,7 +98,7 @@ session_start();
                         <input type="submit" name="login" value="Log In" class="btn btn-secondary px-4">
                         <a href="registration.php" class="registration">No account? Register here.</a>
                     </span>
-                    
+
                 </form>
         </div>
     </div>
@@ -109,10 +109,11 @@ session_start();
 <?php
 if(isset($_POST['login'])){
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = mysqli_real_escape_string($conn,$_POST['username']);
+    $password = mysqli_real_escape_string($conn,$_POST['password']);
+    $password = md5($password);
 
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
+    $sql = "SELECT * FROM users WHERE username='$username' LIMIT 1";
     $run = mysqli_query($conn,$sql);
 
     if(mysqli_num_rows($run) > 0){
@@ -120,19 +121,27 @@ if(isset($_POST['login'])){
 
             if($row['user_type'] == '1'){
                 echo "<script>alert('User unavailable'); </script>";
-            }else{
+            }
+            else
+            {
+
                 $_SESSION['username'] = $username;
-                $_SESSION['password'] = $password;
                 $_SESSION['user_id'] = $row ['user_id'];
                 header("Location: home.php");
+                
             }
           
         }
     }else{
-        echo "User not found" . $conn->error;
+        echo "<script>alert('User not found'); </script>";
     }
 }
 
+// $_SESSION['username'] = $username;
+// $_SESSION['password'] = $password;
+// $_SESSION['user_id'] = $row ['user_id'];
+// header("Location: home.php");
 ob_end_flush();
 
 ?>
+

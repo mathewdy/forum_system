@@ -91,7 +91,7 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
             foreach($run_profile as $row){
                 ?>
                 <div class="img-col col-12 mb-4 text-center">
-                    <img class="mb-3" src="<?php echo "uploads/" . $row ['image']?>" alt="user image" style="height: 250px; width: 250px; border-radius: 50%;">
+                    <img class="mb-3" src="<?php echo "../users/uploads/" . $row ['image']?>" alt="user image" style="height: 250px; width: 250px; border-radius: 50%;">
                     <h2 style="color: rgba(255,255,255,0.6);"><?= ucfirst($row['username']);?></h2>
                 </div>
                 <hr class="featurette-divider">

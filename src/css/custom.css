@@ -17,3 +17,8 @@ p{
     letter-spacing: 1px;
     color: rgba(255, 255, 255, 0.6);
 }
+.dropdown-item{
+    font-family: 'Bearskin-DEMO-Regular';
+    font-size: 1em;
+    letter-spacing: 2px;
+}

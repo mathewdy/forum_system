@@ -1,3 +1,14 @@
+<?php
+include('connection.php');
+session_start();
+
+if(isset($_SESSION['user_id'])){
+    $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +23,9 @@
     <title>Soul Inc.</title>
 </head>
 <style>
+    .description p{
+        font-family:'Times New Roman', Times, serif;
+    }
 </style>
 <body style="background: rgba(0, 0, 0, 0.9); overflow-x: hidden;">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -34,11 +48,11 @@
             <a class="nav-link px-4" href="about.php">About</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link px-4" href="users/home.php">Contact us</a>
+            <a class="nav-link px-4" href="contact.php">Contact us</a>
             </li>
             <?php 
                     
-                    if(isset($_SESSION['user_id'])){
+                    if(isset($user_id)){
                         ?>
 
                     <li class="nav-item dropdown">
@@ -50,7 +64,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings align-middle me-2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
-                            <a class="dropdown-item text-light" href="profile.php?user_id=<?= $user_id; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Profile</a>
+                            <a class="dropdown-item text-light" href="users/profile.php?user_id=<?= $user_id; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-light" href="logout.php">Log out</a>
                         </div>
@@ -86,7 +100,7 @@
         <span  style="height:100%;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#990000" fill-opacity="1" d="M0,64L8,90.7C16,117,32,171,48,202.7C64,235,80,245,96,234.7C112,224,128,192,144,154.7C160,117,176,75,192,85.3C208,96,224,160,240,202.7C256,245,272,267,288,240C304,213,320,139,336,128C352,117,368,171,384,165.3C400,160,416,96,432,106.7C448,117,464,203,480,240C496,277,512,267,528,266.7C544,267,560,277,576,288C592,299,608,309,624,272C640,235,656,149,672,128C688,107,704,149,720,149.3C736,149,752,107,768,90.7C784,75,800,85,816,122.7C832,160,848,224,864,240C880,256,896,224,912,186.7C928,149,944,107,960,117.3C976,128,992,192,1008,208C1024,224,1040,192,1056,165.3C1072,139,1088,117,1104,133.3C1120,149,1136,203,1152,208C1168,213,1184,171,1200,149.3C1216,128,1232,128,1248,112C1264,96,1280,64,1296,48C1312,32,1328,32,1344,74.7C1360,117,1376,203,1392,208C1408,213,1424,139,1432,101.3L1440,64L1440,0L1432,0C1424,0,1408,0,1392,0C1376,0,1360,0,1344,0C1328,0,1312,0,1296,0C1280,0,1264,0,1248,0C1232,0,1216,0,1200,0C1184,0,1168,0,1152,0C1136,0,1120,0,1104,0C1088,0,1072,0,1056,0C1040,0,1024,0,1008,0C992,0,976,0,960,0C944,0,928,0,912,0C896,0,880,0,864,0C848,0,832,0,816,0C800,0,784,0,768,0C752,0,736,0,720,0C704,0,688,0,672,0C656,0,640,0,624,0C608,0,592,0,576,0C560,0,544,0,528,0C512,0,496,0,480,0C464,0,448,0,432,0C416,0,400,0,384,0C368,0,352,0,336,0C320,0,304,0,288,0C272,0,256,0,240,0C224,0,208,0,192,0C176,0,160,0,144,0C128,0,112,0,96,0C80,0,64,0,48,0C32,0,16,0,8,0L0,0Z"></path></svg></span>
         <div class="container-fluid d-flex flex-column justify-content-center">
             <div class="row d-flex align-items-center justify-content-center">
-                <span class="card bg-dark p-5 col-lg-5 m-5">
+                <span class="card bg-dark p-5 col-lg-5 col-md-12 m-lg-5 m-md-0 m-sm-0 description">
                     <p style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-align: justify;">
                     <span style="color:#990000;">Helluva Promotion</span> is a Role-playing, 3D Puzzle adventure, game where you play as 
                     a simple yet hard working businessman who died on the spot and was sent to the deepest pits 
@@ -113,7 +127,7 @@
                     out of the hell.
                     </p>
                 </span>
-                <span class="col-lg-6">
+                <span class="col-lg-6 col-md-12 description">
                     <span class="card bg-dark p-5" style="border-left:3px solid #990000;">
                         <p style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-align: justify">
                             Chapter 1 will commence after a brief cutscene that will play shortly to give context 
@@ -141,8 +155,8 @@
                         </p>
                     </span>
                 </span>
-                <div class="col-lg-12 container-lg d-flex align-items-center justify-content-center">
-                    <div class="row card bg-dark container-lg">
+                <div class="col-lg-12 d-flex align-items-center justify-content-center">
+                    <div class="row card bg-dark container">
                         <span class="py-4">
                             <p class="display-6" style="font-family: 'Bearskin-DEMO-Regular'; color: rgba(255,255,255,0.6);">Concept Art gallery</p>
                             <hr class="featurette-divider pb-0 mb-0">
@@ -195,7 +209,7 @@
     <div class="footer">
         <section class="bg-dark py-4 text-center">
             <img src="src/img/photos/soul_inc.png" alt="" srcset="" style="height: 7em;">
-            <p class="h3" style="font-family: 'Bearskin'; color:rgba(255,255,255,0.6);">All Rights Reserved @ 2022</p>
+            <p class="h3" style="color:rgba(255,255,255,0.6);">All Rights Reserved @ 2022</p>
         </section>
     </div>
 </div>

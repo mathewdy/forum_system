@@ -52,7 +52,7 @@ session_start();
             <a class="nav-link px-4" href="../about.php">About</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link px-4" href="home.php">Contact us</a>
+            <a class="nav-link px-4" href="../contact.php">Contact us</a>
             </li>
             <li class="nav-item">
             <a class="nav-link px-4" href="registration.php">Sign up</a>
@@ -74,15 +74,15 @@ session_start();
                     <div class="col-lg-7 col-md-12 mb-4 text-start">
                         <label for="">Password</label>
                         <input type="password" name="password" class="form-control" style="outline: none;">
+                        <a href="forgot-password.php" class="registration">Forgot Password?</a>
                     </div>
                     
-                    <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
+                    <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center mb-5" style="z-index: 111111;">
                         <input type="submit" name="login" value="Log In" class="btn btn-secondary px-4">
                         <a href="registration.php" class="registration">No account? Register here.</a>
                     </span>
 
-                    <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
-                        <a href="forgot-password.php" class="registration">Forgot Password?</a>
+                    <span class="col-lg-7 col-md-12 d-flex justify-content-center align-items-center" style="z-index: 111111;">
                     </span>
                 </form>
         </div>

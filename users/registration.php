@@ -52,7 +52,7 @@ session_start();
             <a class="nav-link px-4" href="../about.php">About</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link px-4" href="home.php">Contact us</a>
+            <a class="nav-link px-4" href="../contact.php">Contact us</a>
             </li>
             <li class="nav-item">
             <a class="nav-link active px-4" aria-current="page" href="registration.php">Sign up</a>
@@ -61,38 +61,35 @@ session_start();
         </div>
     </div>
     </nav>
-    <div class="container p-lg-5 d-flex justify-content-center align-items-center" style=" height: 50em;">
-        <div class="card bg-dark w-lg-50 p-5">
+    <div class="container-lg p-lg-5 d-flex justify-content-center align-items-center" style=" height: 50em;">
+        <div class="card bg-dark d-flex justify-content-center align-items-center p-5">
             <h1 class=" display-5 text-center" style="color:rgba(255,255,255,0.6); font-family: 'Bearskin-DEMO-Regular';">Registration</h1>
-            <form action="" method="POST" enctype="multipart/form-data" class="row p-lg-5">
-                <div class="col-lg-6">
+            <form action="" method="POST" enctype="multipart/form-data" class="row justify-content-center py-5">
+                <div class="col-lg-4">
                     <label for="">First Name</label>
                     <input type="text" class="form-control" name="first_name">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label for="">Last Name</label>
                     <input type="text" class="form-control" name="last_name">
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <label for="">Image</label>
                     <input type="file" class="form-control" name="image">
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <label for="">Username</label>
                     <input type="text" class="form-control" name="username">
                 </div>
-                <div class="col-lg-12 mb-4">
+                <div class="col-lg-8 mb-4">
                     <label for="">Password</label>
                     <input type="password" class="form-control" name="password">
                 </div>
-                <div class="col-lg-12 d-flex justify-content-between align-items-center">
+                <div class="col-lg-8 d-flex justify-content-between align-items-center">
                     <input type="submit" name="register" class="btn btn-secondary" value="Create Account">
                     <a href="login.php" class="registration">Already have an account?</a>
                 </div>
             </form>
-                <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center" style="z-index: 111111;">
-                    <a href="login.php" class="registration">Log in</a>
-                </span>
         </div>
     </div>
     <script src="../src/js/app.js"></script>

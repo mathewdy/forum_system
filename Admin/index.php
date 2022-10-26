@@ -43,10 +43,7 @@ $members = $row[0];
                     <a class="nav-link active px-4" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-4" href="about.php">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-4" href="users/home.php">Contact us</a>
+                    <a class="nav-link px-4" href="members.php">Members</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
@@ -67,12 +64,6 @@ $members = $row[0];
         </div>
     </nav>
     <main class="container mb-5" style="color:rgba(255,255,255,0.6);">
-        <section class="pt-5">
-            <div class="card bg-dark w-25 p-4">
-                <h4 style="color:rgba(255,255,255,0.6);">Members: <?php echo("$members"); ?> </h4>
-                <a href="members.php">View Members</a>
-            </div>
-        </section>
         <div class="container-fluid p-0 pt-5">
             <h1 style="color: rgba(255,255,255,0.6);">Forum</h1>        
         </div>
@@ -192,7 +183,7 @@ $members = $row[0];
                 
             }
         }else{
-            echo "No posts available." . $conn->error;
+            echo "<div class='py-5'>No posts available.</div>". $conn->error;
         }
 
         ?>

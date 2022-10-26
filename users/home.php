@@ -20,7 +20,7 @@ $user_id = $_SESSION['user_id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../src/css/custom.css">
     <link rel="stylesheet" href="../src/css/app.css">
-    <title>Document</title>
+    <title>Soul Inc.</title>
 </head>
 <body style="background: rgba(0, 0, 0, 0.9);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -41,9 +41,6 @@ $user_id = $_SESSION['user_id'];
             </li>
             <li class="nav-item">
             <a class="nav-link px-4" href="../about.php">About</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link px-4" href="../contact.php">Contact us</a>
             </li>
             <?php 
                     
@@ -162,14 +159,12 @@ $user_id = $_SESSION['user_id'];
                                                             foreach($run as $row ) {
                                                                 ?>
                                                                 <section class="container-fluid d-flex align-items-center justify-content-center px-4 px-sm-0">
-                                                                    <span class="d-flex justify-content-center align-items-center">
-                                                                        <img src="<?php echo "uploads/" . $row['image'] ?>" alt="image user" style="height:80px; width: 80px; border-radius: 50%; padding: 0; margin: 0;">
-                                                                    </span>
                                                                     <div class="card bg-dark px-3 py-3 mx-3 w-100">
-                                                                        <p class="p-0 m-0"><?php echo ucfirst($row ['username']);?></p>
                                                                         <span class="mt-2">
-                                                                            <input type="text" name="title" class="w-100" value="<?php echo $row['title']?>">
-                                                                            <input type="text" name="topic" class="w-100" value="<?php echo $row['topic']?>">
+                                                                            <label for="">Title</label>
+                                                                            <input type="text" name="title" class="w-100 form-control mb-4" value="<?php echo $row['title']?>">
+                                                                            <label for="">Body</label>
+                                                                            <textarea name="topic" id="" rows="10" class="form-control" style="resize: none;"><?php echo $row['topic']?></textarea>
                                                                             <br>
                                                                             <input type="hidden" name="user_id" value="<?php echo $row ['user_id']?>">
                                                                             <input type="hidden" name="topic_id" value="<?php echo $row ['topic_id']?>">

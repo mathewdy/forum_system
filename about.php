@@ -38,9 +38,6 @@ if(isset($_SESSION['user_id'])){
             <li class="nav-item">
             <a class="nav-link active px-4" href="about.php" aria-current="page">About</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link px-4" href="contact.php">Contact us</a>
-            </li>
             <?php 
                     
                     if(isset($user_id)){

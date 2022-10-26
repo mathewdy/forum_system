@@ -75,9 +75,6 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
             <li class="nav-item">
             <a class="nav-link px-4" href="../about.php">About</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link px-4" href="../contact.php">Contact us</a>
-            </li>
             <?php 
                     
                     if(isset($_SESSION['user_id'])){

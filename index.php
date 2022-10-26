@@ -47,9 +47,6 @@ if(isset($_SESSION['user_id'])){
             <li class="nav-item">
             <a class="nav-link px-4" href="about.php">About</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link px-4" href="contact.php">Contact us</a>
-            </li>
             <?php 
                     
                     if(isset($user_id)){
@@ -155,31 +152,31 @@ if(isset($_SESSION['user_id'])){
                         </p>
                     </span>
                 </span>
-                <div class="col-lg-12 d-flex align-items-center justify-content-center">
-                    <div class="row card bg-dark container">
+                <div class="col-lg-12 d-flex align-items-center justify-content-center px-lg-5">
+                    <div class="row card bg-dark container-fluid">
                         <span class="py-4">
                             <p class="display-6" style="font-family: 'Bearskin-DEMO-Regular'; color: rgba(255,255,255,0.6);">Concept Art gallery</p>
                             <hr class="featurette-divider pb-0 mb-0">
                         </span>
                         <div class="col-12 d-flex">
-                            <div class="row p-lg-5 py-5">
-                                <div class="col-lg-7 col-md-12 row d-flex flex-column justify-content-start pt-5">
+                            <div class="row p-lg-5 py-lg-5">
+                                <div class="col-lg-8 col-md-12 row d-flex flex-column justify-content-start pt-5">
                                     <div class="col-lg-12">
                                         <p class="display-6 pb-lg-3" style="font-family: 'Bearskin-DEMO-Regular'; color: rgba(255,255,255,0.6);">Character Models</p>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12 mb-2">
                                         <a data-src="src/img/photos/character_model_2.png" data-fancybox="character">
-                                            <img src="src/img/photos/character_model_2.png" alt="" class="w-100 shadow-1-strong rounded mb-lg-4 mb-md-0">
+                                            <img src="src/img/photos/character_model_2.png" alt="" class="w-100 shadow-1-strong rounded mb-lg-4 mb-md-0" >
                                         </a>
                                     </div>
                                     
                                 </div>
-                                <div class="col-lg-5 col-md-12 d-flex flex-column justify-content-center">
+                                <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-end">
                                     <a data-src="src/img/photos/character_model.png" data-fancybox="character">
-                                        <img src="src/img/photos/character_model.png" alt="" class="w-100 shadow-1-strong rounded mb-2 pt-5">
+                                        <img src="src/img/photos/character_model.png" alt="" class="w-100 shadow-1-strong rounded mb-2 pt-lg-5">
                                     </a>
                                     <a data-src="src/img/photos/eyeball.png" data-fancybox="character">
-                                        <img src="src/img/photos/eyeball.png" alt="" class="w-100 shadow-1-strong rounded mb-5">
+                                        <img src="src/img/photos/eyeball.png" alt="" class="w-100 shadow-1-strong rounded">
                                     </a>
                                 </div>
                                 <p class="display-6" style="font-family: 'Bearskin-DEMO-Regular'; color: rgba(255,255,255,0.6);">Maps</p>
@@ -205,6 +202,34 @@ if(isset($_SESSION['user_id'])){
                
             </div>
         </div>
+    </div>
+    <div id="about" class="mt-5">
+        <section>
+            <div class="bg-dark d-flex justify-content-center p-5">
+                <span class="row justify-content-start my-5">
+                    <div class="col-lg-12 col-sm-12">
+                        <span class="text-center">
+                            <p class="display-4 py-0 my-0 mb-0">Get in touch</p>
+                            <p class="h2 mb-4" style="color:rgba(255,255,255,0.6);">Contact us at details below</p>
+                        </span>
+                        
+                        <span class="d-flex mb-2    ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                            </svg>
+                            <p class="h2 px-2" style="color:rgba(255,255,255,0.6);">P. Paredes St., Sampaloc, Manila 1015</p>
+                        </span>
+                        <span class="d-flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                            </svg>
+                            <p class="h2 px-2" style="color:rgba(255,255,255,0.6);">+63-912-123-1234</p>
+                        </span>
+                    </div>
+                </span>
+                <span class="px-2 my-5 m-0"><hr class="featurette-divider mt-0 pt-0"></span>
+            </div>
+        </section>
     </div>
     <div class="footer">
         <section class="bg-dark py-4 text-center">

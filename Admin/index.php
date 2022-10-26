@@ -143,21 +143,18 @@ $members = $row[0];
                                                             foreach($run as $row ) {
                                                                 ?>
                                                                 <section class="container-fluid d-flex align-items-center justify-content-center px-4 px-sm-0">
-                                                                    <span class="d-flex justify-content-center align-items-center">
-                                                                        <img src="<?php echo "../users/uploads/" . $row['image'] ?>" alt="image user" style="height:80px; width: 80px; border-radius: 50%; padding: 0; margin: 0;">
-                                                                    </span>
                                                                     <div class="card bg-dark px-3 py-3 mx-3 w-100">
-                                                                        <p class="p-0 m-0" style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><?php echo ucfirst($row ['username']);?></p>
                                                                         <span class="mt-2">
-                                                                            <input type="text" name="title" class="w-100" value="<?php echo $row['title']?>">
-                                                                            <br>
-                                                                            <input type="text" name="topic" class="w-100" value="<?php echo $row['topic']?>">
+                                                                            <label for="">Title</label>
+                                                                            <input type="text" name="title" class="w-100 form-control mb-4" value="<?php echo $row['title']?>">
+                                                                            <label for="">Body</label>
+                                                                            <textarea name="topic" id="" rows="10" class="form-control" style="resize: none;"><?php echo $row['topic']?></textarea>
                                                                             <br>
                                                                             <input type="hidden" name="user_id" value="<?php echo $row ['user_id']?>">
                                                                             <input type="hidden" name="topic_id" value="<?php echo $row ['topic_id']?>">
                                                                         </span>
                                                                     </div>
-                                                                </section>              
+                                                                </section>             
                                                                 <?php
                                                             }
                                                         }

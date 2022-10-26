@@ -29,7 +29,7 @@ $members = $row[0];
     <link rel="stylesheet" href="../src/css/app.css">
     <link rel="stylesheet" href="../src/css/custom.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-    <title>Document</title>
+    <title>Soul Inc.</title>
 </head>
 <body style="background: rgba(0, 0, 0, 0.9);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

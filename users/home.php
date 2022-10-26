@@ -86,8 +86,10 @@ $user_id = $_SESSION['user_id'];
         <!----create post--->
             <div class="card bg-dark p-5">
                 <form action="add-post.php" method="POST">
-                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Post</label>
-                    <input type="text" class="form-control my-3" name="topic" >
+                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Title</label>
+                    <input type="text" class="form-control my-3" name="title" placeholder="What's up?">
+                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Topic</label>
+                    <input type="text" class="form-control my-3" name="topic" placeholder="What's on your mind?" >
                     <span class="d-flex flex-row justify-content-end">
                         <input type="submit" class="btn btn-secondary" name="add_post">
                     </span>
@@ -104,7 +106,7 @@ $user_id = $_SESSION['user_id'];
         <?php
 
         //view post muna bago mag comment
-        $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
+        $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, posts.title,
         users.user_id , users.username , users.image 
         FROM posts
         LEFT JOIN users 
@@ -119,6 +121,7 @@ $user_id = $_SESSION['user_id'];
                             <img src="<?php echo "uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
                             <span class="px-3">
                                 <p class="p-0 m-0"><?= $row['username']?></p>
+                                <p class="p-0 m-0"><?php echo $row ['title']?></p>
                                 <a href="view-post.php?topic_id=<?php echo $row ['topic_id']?>" style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
                             </span>
                         
@@ -148,7 +151,7 @@ $user_id = $_SESSION['user_id'];
                                                 <form action="" method="POST">
 
                                                 <?php
-                                                        $sql = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
+                                                        $sql = "SELECT posts.topic_id, posts.topic, posts.date_time_created, posts.title,
                                                         users.user_id , users.username , users.image , users.date_time_created
                                                         FROM posts
                                                         LEFT JOIN users 
@@ -165,6 +168,7 @@ $user_id = $_SESSION['user_id'];
                                                                     <div class="card bg-dark px-3 py-3 mx-3 w-100">
                                                                         <p class="p-0 m-0"><?php echo ucfirst($row ['username']);?></p>
                                                                         <span class="mt-2">
+                                                                            <input type="text" name="title" class="w-100" value="<?php echo $row['title']?>">
                                                                             <input type="text" name="topic" class="w-100" value="<?php echo $row['topic']?>">
                                                                             <br>
                                                                             <input type="hidden" name="user_id" value="<?php echo $row ['user_id']?>">
@@ -241,9 +245,10 @@ if(isset($_POST['update'])){
     $user_id = $_POST['user_id'];
     $topic_id = $_POST['topic_id'];
     $topic = $_POST['topic'];
+    $title = $_POST['title'];
 
 
-    $sql_update = "UPDATE posts SET topic = '$topic', date_time_updated= '$date $time' WHERE user_id = '$user_id' AND topic_id = '$topic_id'";
+    $sql_update = "UPDATE posts SET topic = '$topic',title= '$title', date_time_updated= '$date $time' WHERE user_id = '$user_id' AND topic_id = '$topic_id'";
     $run_update = mysqli_query($conn,$sql_update);
 
     if($run_update){

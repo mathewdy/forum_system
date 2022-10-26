@@ -106,7 +106,7 @@ if(isset($_POST['register'])){
         echo "<script>window.location.href='Registration.php'</script>";
     }else{
         
-        if(file_exists("uploads/" .$_FILES['image']['name'])){
+        if(file_exists("../users/uploads/" .$_FILES['image']['name'])){
             $filename = $_FILES['image']['name'];
         }else{
             $query_registration = "INSERT INTO users (user_id,first_name,last_name,image,username,password,user_type,date_time_created,date_time_updated) VALUES ('$user_id','$first_name', '$last_name', '$image', '$username', '$new_password', '$user_type' , '$date $time' , '$date $time')";

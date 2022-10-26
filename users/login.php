@@ -103,13 +103,15 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($run_select)> 0){
         while($row = mysqli_fetch_assoc($run_select)){
             if(password_verify($password, $row['password'])){
-                $_SESSION['user_id'] = $row ['user_id'];
-                
-                $_SESSION['username'] = $username;
-                echo "pasok";
-                header("location: home.php");
-            }else{
-                echo "<script>alert('User does not exists'); </script>";
+                if($row['user_type'] == '0'){
+                    $_SESSION['user_id'] = $row ['user_id'];
+
+                    $_SESSION['username'] = $username;
+                    echo "pasok";
+                    header("location: home.php");
+                }else{
+                    echo "<script>alert('User not allowed');</script>";
+                }
             }
         }
     }else{

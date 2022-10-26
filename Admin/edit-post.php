@@ -18,9 +18,10 @@ if(isset($_POST['update'])){
     $user_id = $_POST['user_id'];
     $topic_id = $_POST['topic_id'];
     $topic = $_POST['topic'];
+    $title = $_POST['title'];
 
 
-    $sql_update = "UPDATE posts SET topic = '$topic', date_time_updated= '$date $time' WHERE topic_id = '$topic_id'";
+    $sql_update = "UPDATE posts SET topic = '$topic', title = '$title' , date_time_updated= '$date $time' WHERE topic_id = '$topic_id'";
     $run_update = mysqli_query($conn,$sql_update);
 
     if($run_update){

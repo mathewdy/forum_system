@@ -3,7 +3,7 @@ include('../connection.php');
 session_start();
 ob_start();
 
-echo $_SESSION['user_id'];
+$_SESSION['user_id'];
 
 
 ?>

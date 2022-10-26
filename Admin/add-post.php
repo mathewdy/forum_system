@@ -14,13 +14,12 @@ if(isset($_POST['add_post'])){
     $topic = $_POST['topic'];
     $title = $_POST['title'];
 
-
     $sql = "INSERT INTO posts (user_id,topic_id,title,topic,date_time_created,date_time_updated)
     VALUES ('$user_id', '$topic_id','$title', '$topic', '$date $time' , '$date $time' )";
     $run_sql = mysqli_query($conn,$sql);
 
     if($run_sql) {
-        echo "<script>window.location.href='home.php' </script>";
+        echo "<script>window.location.href='index.php' </script>";
     }else{
         echo "error" . $conn->error;
     }

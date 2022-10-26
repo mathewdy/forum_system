@@ -50,7 +50,7 @@ $_SESSION['user_id'];
 
         if(isset($_GET['topic_id'])){
             $topic_id = $_GET['topic_id'];
-            $sql_topic = "SELECT posts.topic_id,posts.topic, users.user_id , 
+            $sql_topic = "SELECT posts.topic_id,posts.topic, users.user_id , posts.title,
             users.username , users.image, users.date_time_created
             FROM posts 
             LEFT JOIN users 
@@ -67,8 +67,10 @@ $_SESSION['user_id'];
                                 <p class="mx-2" style="font-size:1.3em;"><?php echo ucfirst($row_topic ['username']); ?> </p>
                             </div>
                             <div class="container p-4">
+                                <h1 style="color: rgba(255,255,255,0.6);"><?php echo $row_topic ['title']?></h1>
                                 <h1 style="color: rgba(255,255,255,0.6);"><?php echo $row_topic ['topic']?></h1>
                             </div>
+
                         </div>
                     </div>
                     <div class="container">

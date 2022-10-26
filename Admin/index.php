@@ -71,8 +71,10 @@ $members = $row[0];
         <!----create post--->
             <div class="card bg-dark p-5">
                 <form action="add-post.php" method="POST">
-                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Post</label>
-                    <input type="text" class="form-control my-3" name="topic" >
+                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Title</label>
+                    <input type="text" class="form-control my-3" name="title" placeholder="What's up?">
+                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Topic</label>
+                    <input type="text" class="form-control my-3" name="topic" placeholder="What's on your mind?">
                     <span class="d-flex flex-row justify-content-end">
                         <input type="submit" class="btn btn-secondary" name="add_post">
                     </span>
@@ -89,7 +91,7 @@ $members = $row[0];
         <?php
 
         //view post muna bago mag comment
-        $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
+        $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, posts.title,
         users.user_id , users.username , users.image 
         FROM posts
         LEFT JOIN users 
@@ -104,10 +106,11 @@ $members = $row[0];
                             <img loading="lazy" src="<?= "../users/uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
                             <span class="px-3">
                                 <p class="p-0 m-0"><?= $row['username']?></p>
+                                <p class="p-0 m-0"><?= $row['title']?></p>
                                 <a href="view-post.php?topic_id=<?= $row ['topic_id']?>" style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
                             </span>
                         
-                      
+
 
                         <!--hindi pa tapos yung edit--->
                             <span class="ms-auto">
@@ -129,7 +132,7 @@ $members = $row[0];
                                                 <form action="edit-post.php" method="POST">
 
                                                 <?php
-                                                        $sql = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
+                                                        $sql = "SELECT posts.topic_id, posts.topic, posts.date_time_created, posts.title,
                                                         users.user_id , users.username , users.image , users.date_time_created
                                                         FROM posts
                                                         LEFT JOIN users 
@@ -146,6 +149,8 @@ $members = $row[0];
                                                                     <div class="card bg-dark px-3 py-3 mx-3 w-100">
                                                                         <p class="p-0 m-0" style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><?php echo ucfirst($row ['username']);?></p>
                                                                         <span class="mt-2">
+                                                                            <input type="text" name="title" class="w-100" value="<?php echo $row['title']?>">
+                                                                            <br>
                                                                             <input type="text" name="topic" class="w-100" value="<?php echo $row['topic']?>">
                                                                             <br>
                                                                             <input type="hidden" name="user_id" value="<?php echo $row ['user_id']?>">

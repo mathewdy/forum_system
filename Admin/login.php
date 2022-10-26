@@ -73,6 +73,7 @@ if(isset($_POST['login'])){
             if(password_verify($password, $row['password'])){
                 if($row['user_type'] == '1'){
                     $_SESSION['user_id'] = $row ['user_id'];
+                    $_SESSION['user_type'] = $row ['user_type'];
 
                     $_SESSION['username'] = $username;
                     echo "pasok";

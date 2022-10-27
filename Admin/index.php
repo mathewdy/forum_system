@@ -107,7 +107,7 @@ $members = $row[0];
                         <span class="d-flex">
                             <img loading="lazy" src="<?= "../users/uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
                             <span class="px-3">
-
+                                <p class="p-0 m-0"><?= $row['username']?>
                                 <?php
                                     if($row['user_type'] == '1'){
                                         echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
@@ -118,8 +118,8 @@ $members = $row[0];
                                         echo "";
                                     }
                                 ?>
-
-                                <p class="p-0 m-0"><?= $row['username']?></p>
+                                </p>
+                                
                                 <p class="p-0 m-0"><?= $row['title']?></p>
                                 <a href="view-post.php?topic_id=<?= $row ['topic_id']?>" style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
                             </span>

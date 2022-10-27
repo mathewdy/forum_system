@@ -54,7 +54,7 @@ if(isset($_SESSION['user_id'])){
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
                             <a class="dropdown-item text-light" href="users/profile.php?user_id=<?= $user_id; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user align-middle me-1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-light" href="logout.php">Log out</a>
+                            <a class="dropdown-item text-light" href="../forum_system/users/logout.php">Log out</a>
                         </div>
                     </li>
                     <?php

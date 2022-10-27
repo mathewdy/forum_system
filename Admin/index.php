@@ -155,7 +155,7 @@ $members = $row[0];
 
                                     <!-----hindi pa din tapos yung delete--->
 
-                                    <a href='delete-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]' style='color: rgba(255,255,255,0.6); padding: 0 0 0 5px;'>Delete</a>
+                                    <a href="delete-post.php?topic_id=<?php echo $row['topic_id']?>" style='color: rgba(255,255,255,0.6); padding: 0 0 0 5px;'>Delete</a>
                                     
                                 </span>
                             </span>

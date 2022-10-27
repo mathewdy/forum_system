@@ -5,8 +5,7 @@ ob_start();
 
 
 
-if(isset($_GET['user_id']) && isset($_GET['topic_id'])){
-    $user_id = $_GET['user_id'];
+if(isset($_GET['topic_id'])){
     $topic_id = $_GET['topic_id'];
 
     

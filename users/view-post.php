@@ -85,7 +85,7 @@ $user_id = $_SESSION['user_id'];
         if(isset($_GET['topic_id'])){
             $topic_id = $_GET['topic_id'];
             $sql_topic = "SELECT posts.topic_id,posts.topic, users.user_id , posts.title,
-            users.username , users.image, users.date_time_created
+            users.username , users.image, users.date_time_created , users.user_type
             FROM posts 
             LEFT JOIN users 
             ON posts.user_id = users.user_id WHERE topic_id = '$topic_id'";
@@ -98,7 +98,20 @@ $user_id = $_SESSION['user_id'];
                         <div class="card bg-dark px-5 py-4">
                             <div class="d-flex flex-row align-items-end">
                                 <img src="<?php echo "uploads/" . $row_topic ['image'] ?>" alt="image user" style="height:50px; width: 50px; border-radius: 50%; padding: 0; margin: 0;">
-                                <p class="mx-2 h1" style="color: rgba(255,255,255,0.6);"><?php echo ucfirst($row_topic ['username']); ?> </p>                                
+                                <p class="mx-2 h1" style="color: rgba(255,255,255,0.6);"><?php echo ucfirst($row_topic ['username']); ?></p>    
+                                <?php
+                            
+                                if($row_topic['user_type'] == '1'){
+                                    echo ' <p> <svg xmlns="http://www.w3.org/2000/svg"   width="20" height="20" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                                    <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0h-7zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492V2.5z"/>
+                                   
+                                 </svg>  </p>';
+                                }else{
+                                    echo "";
+                                }
+
+                            ?>                            
                             </div>
                             <hr class="featurette-divider">
                             <div class="container p-4">
@@ -127,7 +140,7 @@ $user_id = $_SESSION['user_id'];
         if(isset($_GET['topic_id'])){
             $topic_id_1 = $_GET['topic_id'];
 
-            $sql_threads = "SELECT threads.topic_id,threads.comment_id,threads.comment,threads.date_time_created ,users.image, users.username,users.date_time_created, users.user_id
+            $sql_threads = "SELECT threads.topic_id,threads.comment_id,threads.comment,threads.date_time_created ,users.image, users.username,users.date_time_created, users.user_id , users.user_type
             FROM threads
             LEFT JOIN users 
             ON threads.user_id = users.user_id 
@@ -145,6 +158,7 @@ $user_id = $_SESSION['user_id'];
                         <!---forda image ni user--->
                         <div class="card bg-dark px-3 py-3 mx-3 w-100" style="border-left: 3px solid #990000;">
                             <p class="p-0 m-0"><?php echo ucfirst($row_threads ['username']);?></p>
+                            
                             <?php 
                             $d = strtotime($row_threads['date_time_created']); ?>
                             <span class="text-muted"><?= date("F d, Y h:i a", $d);?></span>

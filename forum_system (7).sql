@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 05:57 PM
+-- Generation Time: Oct 26, 2022 at 10:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -37,16 +37,6 @@ CREATE TABLE `posts` (
   `date_time_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `topic`, `date_time_created`, `date_time_updated`) VALUES
-(31, 20222600, 20221747, 'title 123', 'tanga ka ba ', '2022-10-26 11:20:00', '2022-10-26 11:36:58'),
-(32, 20222600, 20221055, 'where did we go', 'banoooooo', '2022-10-26 11:34:00', '2022-10-26 11:34:00'),
-(33, 20222681, 20225307, 'gago 123', 'tanga inutil tarantado 123', '2022-10-26 11:48:00', '2022-10-26 11:49:38'),
-(34, 20226143, 20224231, 'hahaha', 'ha', '2022-10-26 11:52:00', '2022-10-26 11:54:22');
-
 -- --------------------------------------------------------
 
 --
@@ -63,15 +53,6 @@ CREATE TABLE `questions` (
   `date_time_created` datetime NOT NULL,
   `date_time_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `questions`
---
-
-INSERT INTO `questions` (`id`, `user_id`, `question_1`, `answer_1`, `question_2`, `answer_2`, `date_time_created`, `date_time_updated`) VALUES
-(11, 20222600, 'What was your favorite food as a child?', '123', 'What is the name of your first pet?', '12', '2022-10-26 11:19:53', '2022-10-26 11:19:53'),
-(12, 20222681, 'What was your favorite food as a child?', '1', 'What was your first car?', '2', '2022-10-26 11:40:50', '2022-10-26 11:40:50'),
-(13, 20226143, 'What was your favorite food as a child?', '123', 'What is the name of your first pet?', '1234', '2022-10-26 11:50:53', '2022-10-26 11:50:53');
 
 -- --------------------------------------------------------
 
@@ -108,14 +89,6 @@ CREATE TABLE `threads` (
   `date_time_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `threads`
---
-
-INSERT INTO `threads` (`id`, `user_id`, `topic_id`, `comment_id`, `comment`, `date_time_created`, `date_time_updated`) VALUES
-(40, 20222600, 20221055, 202376829, 'haha gago', '2022-10-26 11:35:15', '2022-10-26 11:35:15'),
-(41, 20222681, 20225307, 202358748, 'hahaha', '2022-10-26 11:48:35', '2022-10-26 11:48:35');
-
 -- --------------------------------------------------------
 
 --
@@ -134,15 +107,6 @@ CREATE TABLE `users` (
   `date_time_created` datetime NOT NULL,
   `date_time_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `user_id`, `first_name`, `last_name`, `image`, `username`, `password`, `user_type`, `date_time_created`, `date_time_updated`) VALUES
-(31, 20222600, 'tizucit', 'nojecadub', 'dk.jpg', 'tite', '$2y$10$qxqXVjVFgVVpAZUjqJV9f.D3kDOEdeqBnLm6xcQ8WrEKs5fetsKD2', 1, '2022-10-26 11:17:34', '2022-10-26 11:17:34'),
-(32, 20222681, 'luguza', 'tepik', 'ta.png', 'titeka', '$2y$10$RbYtcsVvjfZipSdERSheFekOchBC1GOEV9lsPzxj6bcq19Fp7yCUi', 0, '2022-10-26 11:40:44', '2022-10-26 11:40:44'),
-(33, 20226143, 'sahajir', 'geporykez', 'mirana.jpg', 'ten', '$2y$10$agk.tgPAoOT2o32LlFj1euiALVYflz4sA.UvoDJiD96psi7VbxEOy', 0, '2022-10-26 11:50:49', '2022-10-26 11:50:49');
 
 --
 -- Indexes for dumped tables
@@ -197,7 +161,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sample`
@@ -215,7 +179,7 @@ ALTER TABLE `threads`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables

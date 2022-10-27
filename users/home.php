@@ -7,7 +7,7 @@ if(empty($_SESSION['user_id'])){
 }
 $_SESSION['user_id'];
 $user_id = $_SESSION['user_id'];
-
+$_SESSION['user_type'];
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +104,7 @@ $user_id = $_SESSION['user_id'];
 
         //view post muna bago mag comment
         $view_post = "SELECT posts.topic_id, posts.topic, posts.date_time_created, posts.title,
-        users.user_id , users.username , users.image 
+        users.user_id , users.username , users.image , users.user_type
         FROM posts
         LEFT JOIN users 
         ON posts.user_id = users.user_id";
@@ -117,7 +117,23 @@ $user_id = $_SESSION['user_id'];
                         <span class="d-flex">
                             <img src="<?php echo "uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
                             <span class="px-3">
-                                <p class="p-0 m-0" data-id="user"><?= $row['username']?></p>
+                                <span class="d-flex align-items-center">
+                                <p class="p-0 m-0" data-id="user"><?= $row['username']?>
+
+                                <?php
+                                
+                                if($row['user_type'] == '1'){
+                                    echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                                    <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0h-7zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492V2.5z"/>
+                                  </svg>';
+                                }else{
+                                    echo "";
+                                }
+
+                                ?>
+                                </p>
+                                </span>
                                 <p class="p-0 m-0"><?php echo $row ['title']?></p>
                                 <a style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
                             </span>

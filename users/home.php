@@ -117,9 +117,9 @@ $user_id = $_SESSION['user_id'];
                         <span class="d-flex">
                             <img src="<?php echo "uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
                             <span class="px-3">
-                                <p class="p-0 m-0"><?= $row['username']?></p>
+                                <p class="p-0 m-0" data-id="user"><?= $row['username']?></p>
                                 <p class="p-0 m-0"><?php echo $row ['title']?></p>
-                                <a href="view-post.php?topic_id=<?php echo $row ['topic_id']?>" style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
+                                <a style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
                             </span>
                         
                       
@@ -134,52 +134,20 @@ $user_id = $_SESSION['user_id'];
                                     <?php 
                                     if($row['user_id'] == $_SESSION['user_id'])
                                     {
-                                        echo "<a href='edit-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]' style='color: rgba(255,255,255,0.6);' data-bs-toggle='modal' data-bs-target='#exampleModal'>Edit</a>";
-                                        // echo "<span class='vr mx-2' style='border:1px solid rgba(255,255,255,0.6);'></span>";
                                         ?>
+                                        <a data-id="<?= $row ['topic_id']; ?>" class='topic' href='edit-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]' style='color: rgba(255,255,255,0.6);' data-bs-toggle='modal' data-bs-target='#topicModal'>Edit</a>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="topicModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content card bg-dark">
                                             <div class="modal-header" style="border:none;">
                                                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" style="color:white; border-radius: 50%;" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="" method="POST">
 
-                                                <?php
-                                                        $sql = "SELECT posts.topic_id, posts.topic, posts.date_time_created, posts.title,
-                                                        users.user_id , users.username , users.image , users.date_time_created
-                                                        FROM posts
-                                                        LEFT JOIN users 
-                                                        ON posts.user_id = users.user_id WHERE posts.user_id ='$row[user_id]' AND posts.topic_id = '$row[topic_id]' ";
-
-                                                        $run = mysqli_query($conn,$sql);
-                                                        if(mysqli_num_rows($run) > 0){
-                                                            foreach($run as $row ) {
-                                                                ?>
-                                                                <section class="container-fluid d-flex align-items-center justify-content-center px-4 px-sm-0">
-                                                                    <div class="card bg-dark px-3 py-3 mx-3 w-100">
-                                                                        <span class="mt-2">
-                                                                            <label for="">Title</label>
-                                                                            <input type="text" name="title" class="w-100 form-control mb-4" value="<?php echo $row['title']?>">
-                                                                            <label for="">Body</label>
-                                                                            <textarea name="topic" id="" rows="10" class="form-control" style="resize: none;"><?php echo $row['topic']?></textarea>
-                                                                            <br>
-                                                                            <input type="hidden" name="user_id" value="<?php echo $row ['user_id']?>">
-                                                                            <input type="hidden" name="topic_id" value="<?php echo $row ['topic_id']?>">
-                                                                        </span>
-                                                                    </div>
-                                                                </section>              
-                                                                <?php
-                                                            }
-                                                        }
-                                                    ?>
                                                     
                                             </div>
                                             <div class="modal-footer" style="border:none;">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <input type="submit" name="update" class="btn btn-primary" value="Update">
                                             </div>
                                             </form>  
                                             </div>
@@ -227,6 +195,24 @@ $user_id = $_SESSION['user_id'];
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <!-- <script src="../src/js/app.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.topic').click(function(){
+            var topic = $(this).data('id');
+            $.ajax({
+                url: 'modal.php',
+                type: 'post',
+                data: {topic: topic},
+                success: function(response){
+                    $('.modal-body').html(response);
+                    $('#topicModal').modal('show');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
 

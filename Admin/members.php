@@ -29,6 +29,7 @@ $members = $row[0];
     <link rel="stylesheet" href="../src/css/app.css">
     <link rel="stylesheet" href="../src/css/custom.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
     <title>Soul Inc.</title>
 </head>
 <body style="background: rgba(0, 0, 0, 0.9);">
@@ -106,7 +107,7 @@ $members = $row[0];
                                         <a href="delete-member.php?user_id=<?php echo $row ['user_id']?>">Delete</a>
                                     </td>
                                 </tr>
-                            </tbody>
+                            
 
                             <?php
 
@@ -123,13 +124,13 @@ $members = $row[0];
         </div>
     </div>
     
+    <!-- jQuery plugin -->
 
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    
-    <!-- jQuery plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
 
     <!-- jQuery Datatable -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>

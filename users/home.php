@@ -135,7 +135,7 @@ $_SESSION['user_type'];
                                 </p>
                                 </span>
                                 <p class="p-0 m-0"><?php echo $row ['title']?></p>
-                                <a style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
+                                <a href='view-post.php?topic_id=<?= $row['topic_id']; ?>' style='font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;'><?php echo $row ['topic']; ?></a>
                             </span>
                         
                       
@@ -151,7 +151,7 @@ $_SESSION['user_type'];
                                     if($row['user_id'] == $_SESSION['user_id'])
                                     {
                                         ?>
-                                        <a data-id="<?= $row ['topic_id']; ?>" class='topic' href='edit-post.php?user_id=$row[user_id]&&topic_id=$row[topic_id]' style='color: rgba(255,255,255,0.6);' data-bs-toggle='modal' data-bs-target='#topicModal'>Edit</a>
+                                        <a data-id="<?= $row ['topic_id']; ?>" class='topic' style='color: rgba(255,255,255,0.6);' data-bs-toggle='modal' data-bs-target='#topicModal'>Edit</a>
                                         <!-- Modal -->
                                         <div class="modal fade" id="topicModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">

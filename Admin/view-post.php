@@ -144,8 +144,7 @@ $_SESSION['user_id'];
                             
                         
                             <span class="d-flex">
-                                <a href='edit-comment.php?comment_id=$row_threads[comment_id]' data-bs-toggle='modal' data-bs-target='#exampleModal' style='color: rgba(255,255,255,0.6);'>Edit</a>
-                                <!-- <span class='vr mx-2' style='border:1px solid rgba(255,255,255,0.6);'></span>"; -->
+                                <a data-id="<?= $row_threads['comment_id']; ?>" class='topic' href='edit-comment.php?comment_id=$row_threads[comment_id]' data-bs-toggle='modal' data-bs-target='#exampleModal' style='color: rgba(255,255,255,0.6);'>Edit</a>
                                     <!-- Modal edit for comments -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -154,26 +153,8 @@ $_SESSION['user_id'];
                                                     <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" style="color:white; border-radius: 50%;" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="edit-comment.php" method="POST">
-                                                        <section class="container-fluid d-flex align-items-center justify-content-center px-4 px-sm-0">
-                                                            <span class="d-flex justify-content-center align-items-center">
-                                                                <img src="<?php echo "../users/uploads/" . $row_threads['image'] ?>" alt="image user" style="height:80px; width: 80px; border-radius: 50%; padding: 0; margin: 0;">
-                                                            </span>
-                                                            <div class="card bg-dark px-3 py-3 mx-3 w-100">
-                                                        
-                                                                <p class="p-0 m-0"><?php echo ucfirst($row_threads['username']);?></p>
-                                                                <span class="mt-2">
-                                                                    <input type="text" class="form-control" name="comment" value="<?php echo $row_threads['comment']?>">
-                                                                    <input type="hidden" name="comment_id" value="<?php echo $row_threads['comment_id']?>">
-                                                                    <input type="hidden" name="topic_id" value="<?php echo $row_threads['topic_id']?>">
-                                                                </span>
-                                                            </div>
-                                                        </section> 
+                                                    
                                                     </div>
-                                                <div class="modal-footer" style="border:none;">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <input type="submit" name="update" class="btn btn-primary" value="Update">
-                                                </div>
                                                     </form>  
                                             </div>
                                         </div>
@@ -202,8 +183,23 @@ $_SESSION['user_id'];
     </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
-<!-- <script src="../src/js/app.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.topic').click(function(){
+            var topic = $(this).data('id');
+            $.ajax({
+                url: 'edit.modal.php',
+                type: 'post',
+                data: {topic: topic},
+                success: function(response){
+                    $('.modal-body').html(response);
+                    $('#topicModal').modal('show');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
 

@@ -38,23 +38,23 @@ session_start();
             <form action="" method="POST" enctype="multipart/form-data" class="row justify-content-center py-5">
                 <div class="col-lg-4">
                     <label for="">First Name</label>
-                    <input type="text" class="form-control" name="first_name">
+                    <input type="text" class="form-control" name="first_name" required>
                 </div>
                 <div class="col-lg-4">
                     <label for="">Last Name</label>
-                    <input type="text" class="form-control" name="last_name">
+                    <input type="text" class="form-control" name="last_name" required>
                 </div>
                 <div class="col-lg-8">
                     <label for="">Image</label>
-                    <input type="file" class="form-control" name="image">
+                    <input type="file" class="form-control" name="image" required>
                 </div>
                 <div class="col-lg-8">
                     <label for="">Username</label>
-                    <input type="text" class="form-control" name="username">
+                    <input type="text" class="form-control" name="username" required>
                 </div>
                 <div class="col-lg-8 mb-4">
                     <label for="">Password</label>
-                    <input type="password" class="form-control" name="password">
+                    <input type="password" class="form-control" name="password" required>
                 </div>
                 <div class="col-lg-8 d-flex justify-content-between align-items-center">
                     <input type="submit" name="register" class="btn btn-secondary" value="Create Account">

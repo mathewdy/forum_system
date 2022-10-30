@@ -25,7 +25,7 @@ $_SESSION['user_type'];
 <body style="background: rgba(0, 0, 0, 0.9);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand py-0" href="#">
+        <a class="navbar-brand py-0" href="home.php">
             <img src="../src/img/photos/soul_inc_2.png" alt="" height="40">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

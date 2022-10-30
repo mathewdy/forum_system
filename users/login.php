@@ -71,7 +71,7 @@ session_start();
                     <div class="col-lg-7 col-md-12 mb-4 text-start">
                         <label for="">Password</label>
                         <input type="password" name="password" class="form-control" style="outline: none;">
-                        <a href="forgot-password.php" class="registration">Forgot Password?</a>
+                        <a href="forgot-password.php" class="registration">Forgot Password? Or Update Password?</a>
                     </div>
                     
                     <span class="col-lg-7 col-md-12 d-flex justify-content-between align-items-center mb-5" style="z-index: 111111;">

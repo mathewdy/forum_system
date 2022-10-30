@@ -58,7 +58,7 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
 <body style="background: rgba(0, 0, 0, 0.9);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand py-0" href="#">
+        <a class="navbar-brand py-0" href="home.php">
             <img src="../src/img/photos/soul_inc_2.png" alt="" height="40">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -169,10 +169,7 @@ if(mysqli_num_rows($run_verify_user_id) == 0){
                                                         <label class="h6" style="color: rgba(255,255,255,0.6);" for="">Username</label> 
                                                         <input type="text" class="form-control" name="username" value="<?php echo $row ['username']?>">
                                                     </span>
-                                                    <span>
-                                                        <label class="h6" style="color: rgba(255,255,255,0.6);" for="">Password</label> 
-                                                        <input type="password" class="form-control" name="password" value="<?php echo $row ['password']?>">
-                                                    </span>
+                                                   
                                                     <br>
                                                     
                                                     <label class="h6" style="color: rgba(255,255,255,0.6);" for="">First Name</label>
@@ -239,31 +236,45 @@ if(isset($_POST['update'])){
     }
     
     $username = $_POST['username'];
-    $password = $_POST['password'];
-    $new_password = password_hash($password, PASSWORD_DEFAULT);
     
-    
-    $allowed_extension = array('gif','png','jpg','jpeg', 'PNG', 'GIF', 'JPG', 'JPEG');
-    $filename = $_FILES['image']['name'];
-    $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
-    if(!in_array($file_extension,$allowed_extension)){
-        echo "<script>alert('File not allowed'); </script>";
-        echo "<script>window.location.href='profie.php' </script>";
-    }else{
-        
-        $query_update = "UPDATE users SET username = '$username', password= '$new_password' , first_name = '$first_name' , last_name = '$last_name' , image= '$update_filename'WHERE user_id = '$user_id' ";
+    if(empty($new_image)){
+        $query_update = "UPDATE users SET username = '$username', first_name = '$first_name' , last_name = '$last_name' WHERE user_id = '$user_id' ";
         $run_update = mysqli_query($conn,$query_update);
 
         if($run_update){
-            move_uploaded_file($_FILES["image"]["tmp_name"], "uploads/".$_FILES["image"]["name"]);
+            move_uploaded_file($_FILES["image"]["tmp_name"], "../users/uploads/".$_FILES["image"]["name"]);
             unlink("uploads/". $old_image);
             echo "<script>alert('Profile updated!') </script>";
-            echo "<script>window.location.href='login.php' </script>";
+            echo "<script>window.location.href='logout.php' </script>";
             // echo "<script>window.location.href='Units.php' </script>";
         }else{
             echo "error" . $conn->error;
         }
-        
+    }else{
+        $allowed_extension = array('gif','png','jpg','jpeg', 'PNG', 'GIF', 'JPG', 'JPEG');
+        $filename = $_FILES['image']['name'];
+        $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+        if(!in_array($file_extension,$allowed_extension)){
+            echo "<script>alert('File not allowed'); </script>";
+            echo "<script>window.location.href='profile.php' </script>";
+        }else{
+            
+            $query_update = "UPDATE users SET username = '$username', password= '$new_password' , first_name = '$first_name' , last_name = '$last_name' , image= '$update_filename'WHERE user_id = '$user_id' ";
+            $run_update = mysqli_query($conn,$query_update);
+    
+            if($run_update){
+                move_uploaded_file($_FILES["image"]["tmp_name"], "uploads/".$_FILES["image"]["name"]);
+                unlink("uploads/". $old_image);
+                echo "<script>alert('Profile updated!') </script>";
+                echo "<script>window.location.href='login.php' </script>";
+                // echo "<script>window.location.href='Units.php' </script>";
+            }else{
+                echo "error" . $conn->error;
+            }
+            
+        }
     }
+    
+   
 }
 ?>

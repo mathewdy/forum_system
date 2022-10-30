@@ -23,7 +23,7 @@ $user_id = $_SESSION['user_id'];
 <body style="background: rgba(0, 0, 0, 0.9);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand py-0" href="#">
+        <a class="navbar-brand py-0" href="home.php">
             <img src="../src/img/photos/soul_inc_2.png" alt="" height="40">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,8 +81,10 @@ $user_id = $_SESSION['user_id'];
         <!----create post--->
             <div class="card bg-dark p-5">
                 <form action="add-post.php" method="POST">
-                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Post</label>
-                    <input type="text" class="form-control my-3" name="topic" >
+                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Title</label>
+                    <input type="text" class="form-control my-3" name="title" placeholder="What's up?">
+                    <label for="" class="h3 pb-0 mb-0" style="color: rgba(255,255,255,0.6);">Create Topic</label>
+                    <input type="text" class="form-control my-3" name="topic" placeholder="What's on your mind?">
                     <span class="d-flex flex-row justify-content-end">
                         <input type="submit" class="btn btn-secondary" name="add_post">
                     </span>
@@ -100,10 +102,10 @@ $user_id = $_SESSION['user_id'];
             $filter_values = $_POST['search_topic'];
 
             
-            $sql = "SELECT posts.topic_id, posts.topic, posts.date_time_created, 
+            $sql = "SELECT posts.topic_id, posts.topic, posts.date_time_created,posts.title,
             users.user_id , users.username , users.image FROM posts 
             LEFT JOIN users ON posts.user_id = users.user_id
-            WHERE topic LIKE '%$filter_values%'";
+            WHERE posts.topic LIKE '%$filter_values%' OR posts.title LIKE '%$filter_values%'";
             $run = mysqli_query($conn,$sql);
             // echo $filter_values;
             ?>
@@ -118,6 +120,8 @@ $user_id = $_SESSION['user_id'];
                     <img src="<?php echo "uploads/" . $row['image'] ?>" alt="Image of User" style="height:50px; width: 50px; border-radius: 8px; padding: 0; margin: 0;">
                     <span class="px-3">
                         <p class="p-0 m-0"><?= $row['username']?></p>
+                        <p class="p-0 m-0"><?= $row['title']?></p>
+
                         <a href="view-post.php?topic_id=<?php echo $row ['topic_id']?>" style="font-size: 1.3em; color: rgba(255,255,255,0.6); text-decoration: underline;"><?php echo $row ['topic']?></a>
                     </span>
                     <!-- <a href="view-post.php?topic_id=<?php echo $row ['topic_id']?>">View Thread</a> -->
@@ -172,7 +176,7 @@ $user_id = $_SESSION['user_id'];
             <?php
         }
     }else{
-        echo "<script>alert('Topic Unavailable'); </script>";
+        echo "<script>alert('Topic Or Title Unavailable'); </script>";
         echo "<script>window.location.href='home.php' </script>";
         
     }
